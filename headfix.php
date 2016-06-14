@@ -196,7 +196,7 @@
         font-size: 18px;
     }
     .post-content pre {
-        font-size: 13px;
+        font-size: 14px;
     }
     .container {
         max-width: 620px;
@@ -209,7 +209,7 @@
         font-size: 18px;
     }
     .post-content pre {
-        font-size: 13px;
+        font-size: 14px;
     }
 <?php endif?>
 <?php if(shouldEnableBlurFilter()):?>
@@ -287,7 +287,7 @@
 <?php endif?>
 <?php if(deviceIs('Edge')):?>
     /*Edge*/
-    #footer a:after,#header .nav li a:after,#post .post-meta a:after,#index .comments a:after,#index .post-content a:after,#post .post-content a:after,#archive .post-content a:after{
+    #footer a:after,#header .nav li a:after,#post .post-meta a:after,#index .comments a:after,#index .post-content a:after,#post .post-content a:after,#archive .post-content a:after, #archive .comments a:after{
         transition: none
     }
 <?php endif?>

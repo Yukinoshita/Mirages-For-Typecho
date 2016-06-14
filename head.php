@@ -122,9 +122,9 @@ foreach ($addOnHighlightLang as $url) {
     <?php endif?>
 </script>
 <?php if(isMobile()):?>
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300italic,300&subset=latin,latin-ext">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300italic,300,400,400italic&subset=latin,latin-ext">
 <?php else:?>
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300italic,300&subset=latin,latin-ext">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300italic,300,400,400italic&subset=latin,latin-ext">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:100,300,400,600&subset=latin,latin-ext">
 <?php endif?>
 <!-- 使用url函数转换相关路径 -->

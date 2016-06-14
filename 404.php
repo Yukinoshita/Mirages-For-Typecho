@@ -9,7 +9,7 @@
     <style>
         body{
             font-family: 'Open Sans', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft YaHei', Helvetica, arial, sans-serif !important;
-            font-weight: 100;
+            font-weight: 300;
         }
         #wrap{
             color: #191919;

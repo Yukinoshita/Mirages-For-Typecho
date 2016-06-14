@@ -36,7 +36,7 @@
     </script>
 <?php endif?>
 <!--[if lt IE 9]>
-<div class="browsehappy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>'); ?>.</div>
+<div class="browse-happy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>'); ?>.</div>
 <![endif]-->
 <script type="text/javascript">NProgress.inc(0.1);</script>
 <span id="backtop" class="waves-effect waves-button"><i class="fa fa-angle-up"></i></span>

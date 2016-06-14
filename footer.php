@@ -5,7 +5,7 @@
 
 <div id="body-bottom">
 <?php if($this->is('post') || ($this->is('page') && $this->allow('comment')) || $this->is('attachment')):?>
-<div class="container" id="post-f">
+<div class="container">
     <?php if($this->is('post')):?>
         <div class="post-near">
             <nav>
