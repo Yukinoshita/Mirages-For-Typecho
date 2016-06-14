@@ -134,6 +134,20 @@
         $(this).removeAttr("target")
     });
 </script>
+<script>
+    WebFontConfig = {
+        google: {
+            families: ['Merriweather Condensed:300,400,300italic,400italic:latin,latin-ext', 'Open Sans Condensed:300,400,700:latin,latin-ext']
+        },
+        timeout: 3000
+    };
+
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = '//cdn.bootcss.com/webfont/1.6.24/webfontloader.js';
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+</script>
 <?php
 if(isset($this->fields->js)) {
     echo "<script type=\"text/javascript\">\n";
