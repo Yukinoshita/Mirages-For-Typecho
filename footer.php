@@ -137,7 +137,7 @@
 <script>
     WebFontConfig = {
         google: {
-            families: ['Merriweather Condensed:300,400,300italic,400italic:latin,latin-ext', 'Open Sans Condensed:300,400,700:latin,latin-ext']
+            families: ['Merriweather:300,400,300italic,400italic:latin,latin-ext', 'Open Sans:300,400,700:latin,latin-ext']
         },
         timeout: 3000
     };
