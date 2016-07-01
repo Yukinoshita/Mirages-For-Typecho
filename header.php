@@ -66,14 +66,14 @@
                         </div>
                         <h1 class="blog-title light" itemprop="name"><?php $this->author(); ?>
                             <?php if($this->user->hasLogin()):?>
-                                <a class="superscript" href="<?php $this->options->rootUrl();?>/<?=isset($this->options->adminDir) ? trim($this->options->adminDir, '/') : "admin";?>/write-page.php?cid=<?=$this->cid?>" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a class="superscript" href="<?php Helper::options()->adminUrl()?>write-page.php?cid=<?=$this->cid?>" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <?php endif?>
                         </h1>
                         <h2 class="blog-description light bordered bordered-top" itemprop="description"><?=$this->fields->description?></h2>
                     <?php elseif($this->is('page','links')):?>
                         <h1 class="blog-title light" itemprop="name"><?php $this->title() ?>
                             <?php if($this->user->hasLogin()):?>
-                                <a class="superscript" href="<?php $this->options->rootUrl();?>/<?=isset($this->options->adminDir) ? trim($this->options->adminDir, '/') : "admin";?>/write-page.php?cid=<?=$this->cid?>" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a class="superscript" href="<?php Helper::options()->adminUrl()?>write-page.php?cid=<?=$this->cid?>" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <?php endif?>
                         </h1>
 

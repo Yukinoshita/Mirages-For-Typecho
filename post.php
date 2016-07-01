@@ -12,7 +12,7 @@
             <?php endif?>
             <li><?php _e('分类: '); ?><?php $this->category(','); ?></li>
             <?php if($this->user->hasLogin()):?>
-            <li class="edit"><a href="<?php $this->options->rootUrl();?>/<?=isset($this->options->adminDir) ? trim($this->options->adminDir, '/') : "admin";?>/write-post.php?cid=<?=$this->cid?>" target="_blank"><?php _e('编辑'); ?></a></li>
+            <li class="edit"><a href="<?php Helper::options()->adminUrl()?>write-post.php?cid=<?=$this->cid?>" target="_blank"><?php _e('编辑'); ?></a></li>
             <?php endif?>
         </ul>
         <?php endif?>

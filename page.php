@@ -5,7 +5,7 @@
         <?php if(!isTrue($this->fields->hideTitle) && !$this->is('page','about') && !$this->is('page','links')): ?>
         <h2 class="post-title" itemprop="name headline"><?php $this->title() ?>
             <?php if($this->user->hasLogin()):?>
-                <a class="superscript" href="<?php $this->options->rootUrl();?>/<?=isset($this->options->adminDir) ? trim($this->options->adminDir, '/') : "admin";?>/write-page.php?cid=<?=$this->cid?>" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                <a class="superscript" href="<?php Helper::options()->adminUrl()?>write-page.php?cid=<?=$this->cid?>" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
             <?php endif?>
         </h2>
         <?php endif?>
