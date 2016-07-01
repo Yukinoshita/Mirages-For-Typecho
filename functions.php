@@ -27,19 +27,27 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $duoshuoCustomAuthorId = new Typecho_Widget_Helper_Form_Element_Text('duoshuoCustomAuthorId', NULL, NULL, _t('自定义多说Author Id'), _t('自定义多说Author Id'));
     $form->addInput($duoshuoCustomAuthorId);
 
-
-    $adminDir = new Typecho_Widget_Helper_Form_Element_Text('adminDir', NULL, NULL, _t('后台路径'), _t('如果你修改了「__TYPECHO_ADMIN_DIR__」，请在这里填写，否则请留空，默认为「admin」'));
-    $form->addInput($adminDir);
-
+    $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, NULL, _t('本页二维码生成地址'), _t("使用通配符表示文章链接, 支持的通配符有: \n{{%LINK}}: 当前页链接\n{{%BASE64_LINK}}: Base64后的当前页链接\n{{%BASE64_LINK_WITHOUT_SLASH}}: Base64后的当前页链接, 使用`-`替换`/`"));
+    $form->addInput($postQRCodeURL);
+    $rewardQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('rewardQRCodeURL', NULL, NULL, _t('打赏二维码图片地址'), _t("打赏二维码图片地址, 只支持放一张图片, 请用 PS 等软件拼合多张二维码"));
+    $form->addInput($rewardQRCodeURL);
+    
     $shortcutIcon = new Typecho_Widget_Helper_Form_Element_Text('shortcutIcon', NULL, NULL, _t('Shortcut Icon'), _t('留空则使用根目录下的「favicon.ico」文件'));
     $form->addInput($shortcutIcon);
-    $customMeta = new Typecho_Widget_Helper_Form_Element_Textarea('customMeta', NULL, NULL, _t('Custom Meta'), _t(''));
+    $customMeta = new Typecho_Widget_Helper_Form_Element_Textarea('customMeta', NULL, NULL, _t('Custom Meta'), NULL);
     $form->addInput($customMeta);
 
-    $tongJi = new Typecho_Widget_Helper_Form_Element_Text('tongJi', NULL, '', _t('站点统计代码'), NULL);
+    $tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), NULL);
     $form->addInput($tongJi);
-    $bowserInsight = new Typecho_Widget_Helper_Form_Element_Text('bowserInsight', NULL, NULL, _t('Browser Insight'), _t(''));
+    $bowserInsight = new Typecho_Widget_Helper_Form_Element_Textarea('bowserInsight', NULL, NULL, _t('Browser Insight'), NULL);
     $form->addInput($bowserInsight);
+    
+    $customCss = new Typecho_Widget_Helper_Form_Element_Textarea('customCss', NULL, NULL, _t('自定义 CSS'), NULL);
+    $form->addInput($customCss);
+    $customJs = new Typecho_Widget_Helper_Form_Element_Textarea('customJs', NULL, NULL, _t('自定义 JS'), NULL);
+    $form->addInput($customJs);
+    $beforeBodyClose = new Typecho_Widget_Helper_Form_Element_Textarea('beforeBodyClose', NULL, NULL, _t('在 body 标签结束前添加自定义内容'), NULL);
+    $form->addInput($beforeBodyClose);
 
     $otherOptionsBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('otherOptions',
         array(

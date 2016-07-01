@@ -386,16 +386,28 @@
         margin-top: 0;
     }
 <?php endif?>
-<?php if($this->is('page','about')):?>
-    .post-content{
-        padding-top: 30px;
-        font-size: 1.117em;
+<?php if(!$this->is('post') || isPhone()):?>
+    #qr-box {
+        background-color: transparent;
     }
-<?php endif ?>
+<?php endif?>
+<?php if(!($this->is('post') && !isPhone() && (hasValue($this->options->postQRCodeURL) || hasValue($this->options->rewardQRCodeURL)))):?>
+    .post-buttons, #qr-box {
+        display: none;
+    }
+    #body-bottom {
+        margin-top: 0;
+    }
+<?php endif?>
+<?php if(!hasValue($this->options->postQRCodeURL) || !hasValue($this->options->rewardQRCodeURL)): ?>
+    .post-buttons a {
+        width: calc(100% / 2);
+    }
+<?php endif?>
+
 <?php if($this->is('page','links')): ?>
     #wrap {
         color: #1abc9c;
-        font-size: 1.071em;
         font-weight: 300;
     }
     #body .container {
@@ -444,8 +456,8 @@
 <?php endif?>
 
 <?php
-    if(isset($this->options->css)) {
-        echo $this->options->css;
+    if(isset($this->options->customCss)) {
+        echo $this->options->customCss;
     }
     if(isset($this->fields->css)) {
         echo $this->fields->css;

@@ -93,7 +93,7 @@ foreach ($addOnHighlightLang as $url) {
 
     var bg = "<?php
         if($this->is("index")){
-            $this->banner = $this->options->defaultBg;
+            $this->banner = Helper::options()->defaultBg;
         } else {
             $this->banner = loadArchiveBanner($this);
         }
@@ -139,9 +139,9 @@ foreach ($addOnHighlightLang as $url) {
 <?php endif?>
 
 <?php if(THEME_CLASS == "theme-dark"):?>
-    <link rel="stylesheet" href="<?=$highlightJSPath?>/styles/tomorrow-night-eighties.min.css">
+    <link rel="stylesheet" href="<?=$highlightJSPath?>styles/tomorrow-night-eighties.min.css">
 <?php else:?>
-    <link rel="stylesheet" href="<?=$highlightJSPath?>/styles/tomorrow.min.css">
+    <link rel="stylesheet" href="<?=$highlightJSPath?>styles/tomorrow.min.css">
 <?php endif?>
 <?php if($this->options->disableAutoNightTheme <= 0 && !hasValue($this->options->disqusShortName) && THEME_CLASS != "theme-dark"):?>
     <script>
@@ -149,7 +149,7 @@ foreach ($addOnHighlightLang as $url) {
         var USE_MIRAGES_DARK = false;
         if (hour <= 5 || hour >= 22) {
             USE_MIRAGES_DARK = true;
-            injectStyle("<?=$highlightJSPath?>/styles/tomorrow-night-eighties.min.css");
+            injectStyle("<?=$highlightJSPath?>styles/tomorrow-night-eighties.min.css");
         }
     </script>
 <?php endif?>
@@ -160,7 +160,7 @@ foreach ($addOnHighlightLang as $url) {
 <link rel="shortcut icon" href="<?php $this->options->siteUrl(); ?>favicon.ico">
 <?php endif?>
 
-<script src="<?=$highlightJSPath?>/highlight.min.js" type="text/javascript"></script>
+<script src="<?=$highlightJSPath?>highlight.min.js" type="text/javascript"></script>
 <?php if(IS_HTTPS): ?>
 <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js" type="text/javascript"></script>
 <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js" type="text/javascript"></script>

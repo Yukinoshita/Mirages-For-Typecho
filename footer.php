@@ -2,7 +2,22 @@
 
 </div><!-- end .row -->
 </div>
-
+<?php if($this->is('post') && !isPhone() && (hasValue($this->options->postQRCodeURL) || hasValue($this->options->rewardQRCodeURL))):?>
+<?php
+    $postQRCodeURL = $this->options->postQRCodeURL;
+    $postQRCodeURL = str_replace("{{%BASE64_LINK_WITHOUT_SLASH}}", str_replace('/', '-', base64_encode($this->permalink)), $postQRCodeURL);
+    $postQRCodeURL = str_replace("{{%BASE64_LINK}}", base64_encode($this->permalink), $postQRCodeURL);
+    $postQRCodeURL = str_replace("{{%LINK}}", $this->permalink, $postQRCodeURL);
+?>
+<div id="qr-box">
+    <div class="post-qr-code-box">
+        <img src="<?= $postQRCodeURL?>" width="250" height="250" alt="本页链接的二维码"/>
+    </div>
+    <div class="reward-qr-code-box">
+        <img src="<?= $this->options->rewardQRCodeURL?>" height="250" alt="打赏二维码"/>
+    </div>
+</div>
+<?php endif?>
 <div id="body-bottom">
 <?php if($this->is('post') || ($this->is('page') && $this->allow('comment')) || $this->is('attachment')):?>
 <div class="container">
@@ -135,9 +150,15 @@
     });
 </script>
 <script>
+    var fontname;
+    if (window.devicePixelRatio >= 1.5) {
+        fontname = "Merriweather:300,400:latin,latin-ext";
+    } else {
+        fontname = "Open Sans:300,400,700:latin,latin-ext";
+    }
     WebFontConfig = {
         google: {
-            families: ['Merriweather:300,400,300italic,400italic:latin,latin-ext', 'Open Sans:300,400,700:latin,latin-ext']
+            families: [fontname]
         },
         timeout: 3000
     };
@@ -149,10 +170,19 @@
     })(document);
 </script>
 <?php
+if(isset($this->options->customJs)) {
+    echo "<script type=\"text/javascript\">\n";
+    echo $this->options->customJs;
+    echo "\n</script>\n";
+}
 if(isset($this->fields->js)) {
     echo "<script type=\"text/javascript\">\n";
     echo $this->fields->js;
     echo "\n</script>\n";
+}
+
+if(isset($this->options->beforeBodyClose)) {
+    echo $this->options->beforeBodyClose;
 }
 ?>
 </body>
