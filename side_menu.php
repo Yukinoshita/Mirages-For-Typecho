@@ -14,7 +14,7 @@
             </form>
         </div>
         <ul class="menu">
-            <?php if($this->user->hasLogin()):?>
+            <?php if($this->user->hasLogin() || (!empty($this->options->otherOptions) && in_array('alwaysShowDashboardInSideMenu', $this->options->otherOptions))):?>
             <li style="margin-bottom: 30px;"><a href="<?php Helper::options()->adminUrl()?>" target="_blank"><?php _e('Dashboard')?></a></li>
             <?php endif?>
             <li><a href="<?php Helper::options()->siteUrl()?>"><?php _e('Home')?></a></li>

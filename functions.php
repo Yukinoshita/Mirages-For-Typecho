@@ -55,6 +55,7 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
             'enableSSCROnWindows' => _t('为 Windows 平台的 Chrome 浏览器启用平滑滚动'),
             'useQiniuImageResize' => _t('为文章中的图片自动转换合适的大小和格式 (需要使用七牛云存储，配置见 readme.md)'),
             'enableWebP' => _t('启用 WebP 图像格式 (需要使用七牛云存储)'),
+            'alwaysShowDashboardInSideMenu' => _t('始终显示 Dashboard 菜单'),
         ),
         array(), _t('其他选项'));
     $form->addInput($otherOptionsBlock->multiMode());
