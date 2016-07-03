@@ -2,17 +2,19 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig(Typecho_Widget_Helper_Form $form) {
 
-    $baseTheme = new Typecho_Widget_Helper_Form_Element_Radio('baseTheme', array('0'=>_t('Mirages'), '1'=>_t('Mirages White'),'2'=>_t('Mirages Dark')), '0', _t('主题主色调'),_t('默认为 Mirages'));
+    $baseTheme = new Typecho_Widget_Helper_Form_Element_Radio('baseTheme', array('0'=>_t('Mirages'), '1'=>_t('Mirages White'),'2'=>_t('Mirages Dark')), '0', _t('主题基础色调'),_t('默认为 Mirages'));
     $form->addInput($baseTheme);
+    $themeColor = new Typecho_Widget_Helper_Form_Element_Text('themeColor', NULL, NULL, _t('自定义主题主色调'), _t('默认为<span style="color: #1abc9c;">#1abc9c</span>, 你可以自定义任何你喜欢的颜色作为主题主色调。自定义主色调必须使用 Hex Color, 即`#233333`或`#333`的格式。填写错误的格式可能不会生效。'));
+    $form->addInput($themeColor);
     $disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array('0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式'),_t('默认为开启'));
     $form->addInput($disableAutoNightTheme);
-    $staticPath = new Typecho_Widget_Helper_Form_Element_Text('staticPath', NULL, NULL, _t('静态文件路径'), _t('除非你需要引用其它域名下的静态文件并且你知道这个设置是什么，否则请留空'));
+    $staticPath = new Typecho_Widget_Helper_Form_Element_Text('staticPath', NULL, NULL, _t('静态文件路径'), _t('用于 CDN 加速，以主题目录为根目录，设置后一些静态文件会替换成该路径上的文件。'));
     $form->addInput($staticPath);
-    $defaultBg = new Typecho_Widget_Helper_Form_Element_Text('defaultBg', NULL, NULL, _t('站点背景大图地址'), _t('在这里填入一个图片URL地址, 以在网站显示一个背景大图'));
+    $defaultBg = new Typecho_Widget_Helper_Form_Element_Text('defaultBg', NULL, NULL, _t('站点背景大图地址'), _t('在这里填入一个图片URL地址, 以在网站显示一个背景大图。留空则不显示。'));
     $form->addInput($defaultBg);
-    $defaultBgHeight = new Typecho_Widget_Helper_Form_Element_Text('defaultBgHeight', NULL, '60', _t('站点背景大图高度(%)'), _t('站点背景大图高度'));
+    $defaultBgHeight = new Typecho_Widget_Helper_Form_Element_Text('defaultBgHeight', NULL, '60', _t('站点背景大图高度(%)'), _t('站点背景大图高度占屏幕总高度的百分比。'));
     $form->addInput($defaultBgHeight);
-    $sideMenuAvatar = new Typecho_Widget_Helper_Form_Element_Text('sideMenuAvatar', NULL, '', _t('侧边栏头像Email'), NULL);
+    $sideMenuAvatar = new Typecho_Widget_Helper_Form_Element_Text('sideMenuAvatar', NULL, NULL, _t('侧边栏头像'), NULL);
     $form->addInput($sideMenuAvatar);
 
     $disqusShortName = new Typecho_Widget_Helper_Form_Element_Text('disqusShortName', NULL, NULL, _t('Disqus Short Name'), _t('Disqus评论'));
@@ -27,14 +29,14 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $duoshuoCustomAuthorId = new Typecho_Widget_Helper_Form_Element_Text('duoshuoCustomAuthorId', NULL, NULL, _t('自定义多说Author Id'), _t('自定义多说Author Id'));
     $form->addInput($duoshuoCustomAuthorId);
 
-    $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, NULL, _t('本页二维码生成地址'), _t("使用通配符表示文章链接, 支持的通配符有: \n{{%LINK}}: 当前页链接\n{{%BASE64_LINK}}: Base64后的当前页链接\n{{%BASE64_LINK_WITHOUT_SLASH}}: Base64后的当前页链接, 使用`-`替换`/`"));
+    $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, 'http://b.bshare.cn/barCode?site=weixin&url={{%LINK}}', _t('本页二维码生成地址'), _t("使用占位符表示文章链接。留空则不显示。支持的占位符有: <br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%LINK}}</code>: 当前页链接<br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%BASE64_LINK}}</code>: Base64后的当前页链接<br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%BASE64_LINK_WITHOUT_SLASH}}</code>: Base64后的当前页链接, 使用`-`替换`/`。"));
     $form->addInput($postQRCodeURL);
-    $rewardQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('rewardQRCodeURL', NULL, NULL, _t('打赏二维码图片地址'), _t("打赏二维码图片地址, 只支持放一张图片, 请用 PS 等软件拼合多张二维码"));
+    $rewardQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('rewardQRCodeURL', NULL, NULL, _t('打赏二维码图片地址'), _t("打赏二维码图片地址, 只支持放一张图片, 请用 PS 等软件拼合多张二维码。留空则不显示。"));
     $form->addInput($rewardQRCodeURL);
     
     $shortcutIcon = new Typecho_Widget_Helper_Form_Element_Text('shortcutIcon', NULL, NULL, _t('Shortcut Icon'), _t('留空则使用根目录下的「favicon.ico」文件'));
     $form->addInput($shortcutIcon);
-    $customMeta = new Typecho_Widget_Helper_Form_Element_Textarea('customMeta', NULL, NULL, _t('Custom Meta'), NULL);
+    $customMeta = new Typecho_Widget_Helper_Form_Element_Textarea('customMeta', NULL, NULL, _t('Custom Meta'), _t('在 html 的 head 的 meta 标签后添加，可以用于填写 apple-touch-icon 等'));
     $form->addInput($customMeta);
 
     $tongJi = new Typecho_Widget_Helper_Form_Element_Textarea('tongJi', NULL, NULL, _t('站点统计代码'), NULL);
@@ -180,6 +182,32 @@ function startsWith($subject, $str) {
     } else {
         return !substr_compare($subject, $str, 0, strlen($str));
     }
+}
+function hex2RGBColor($hex, $alpha = 1) {
+    $hex = str_replace("#", "", $hex);
+
+    if(strlen($hex) == 3) {
+        $r = hexdec(substr($hex,0,1).substr($hex,0,1));
+        $g = hexdec(substr($hex,1,1).substr($hex,1,1));
+        $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+    } else {
+        $r = hexdec(substr($hex,0,2));
+        $g = hexdec(substr($hex,2,2));
+        $b = hexdec(substr($hex,4,2));
+    }
+    if ($alpha >= 1 || $alpha < 0) {
+        return "rgb({$r}, {$g}, {$b})";
+    }
+    return "rgba({$r}, {$g}, {$b}, {$alpha})";
+}
+function isHexColor($hex) {
+    if (strlen($hex) != 7 && strlen($hex) != 4) {
+        return false;
+    }
+    if (!preg_match('/^#[0-9a-fA-F]+$/i', $hex)) {
+        return false;
+    }
+    return true;
 }
 function loadArchiveBanner($that) {
 

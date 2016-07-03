@@ -164,7 +164,6 @@
     .link-box a:active {
         box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
         -webkit-box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
-        color: #1abc9c;
         -webkit-transform: translateY(-4px);
         transform: translateY(-4px);
         -moz-transform: none;
@@ -183,10 +182,18 @@
     .link-box a:hover {
         box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
         -webkit-box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
-        color: #1abc9c;
         -webkit-transform: translateY(-4px);
         transform: translateY(-4px);
         -moz-transform: none;
+    }
+    body.color-orange #index .post .post-title:hover,#archive .post .post-title:hover {
+        color: #f5871f;
+    }
+    body.color-orange #index .more>a:hover,#archive .more>a:hover {
+        color: #FFF !important;
+        border: 1px solid #f5871f;
+        background-color: rgba(245, 135, 31, 0.5);
+        width: 250px;
     }
 <?php endif?>
 <?php if(isPhone()):?>
@@ -376,8 +383,6 @@
         letter-spacing: 0;
     }
 <?php endif?>
-
-
 </style>
 <style type="text/css">
     /** 页面样式调整 */
@@ -407,7 +412,6 @@
 
 <?php if($this->is('page','links')): ?>
     #wrap {
-        color: #1abc9c;
         font-weight: 300;
     }
     #body .container {
@@ -454,7 +458,13 @@
         background: rgba(0, 0, 0, .35);
     }
 <?php endif?>
-
+</style>
+<?php 
+    if(isHexColor($this->options->themeColor)) {
+        $this->need('head_colors.php');
+    }
+?>
+<style type="text/css">
 <?php
     if(isset($this->options->customCss)) {
         echo $this->options->customCss;
@@ -462,5 +472,5 @@
     if(isset($this->fields->css)) {
         echo $this->fields->css;
     }
-?>
+?> 
 </style>

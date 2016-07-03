@@ -253,7 +253,7 @@ img[src*="Smilies"] {
     margin: 0 auto;
     font-size: 0.8em;
     font-weight: 400;
-    color: #999;
+    color: #999 !important;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -777,7 +777,7 @@ div#body-bottom>.container{
     vertical-align: middle;
 }
 .post-near a {
-    color: #ccc;
+    color: #ccc !important;
     text-decoration: none;
 }
 .post-near {
@@ -1170,7 +1170,7 @@ div#comments{
     font-weight: 300;
 }
 #comments .comment-meta a {
-    color: #999;
+    color: #999 !important;
     font-size: .92857em
 }
 #comments .comment-author {
@@ -1870,7 +1870,7 @@ body.theme-white .post-near .prev:hover, body.theme-white .post-near .next:hover
     background-color: rgba(0,0,0,0.06);
 }
 body.theme-white .post-near a {
-    color: #333;
+    color: #333 !important;
 }
 body.theme-white #comments .widget-title {
     padding-top: 0;
@@ -1931,6 +1931,9 @@ body.theme-dark{
 body.theme-dark #body {
     background-color: #2c2a2a !important;
 }
+body.theme-dark #wrap {
+    background-color: #2c2a2a;
+}
 body.theme-dark #masthead {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.7);
     -webkit-box-shadow: 0 2px 7px rgba(0, 0, 0, 0.7);
@@ -1939,7 +1942,7 @@ body.theme-dark #index .post-content a:not(.no-icon), body.theme-dark #archive .
     color: #1abc9c;
 }
 body.theme-dark #index .post, body.theme-dark #archive .post {
-    background-color: #3c3c3c;
+    background-color: #2c2a2a;
 }
 body.theme-dark #index .post .post-title,body.theme-dark #archive .post .post-title, body.theme-dark #post .post-title a, body.theme-dark #post h1.post-title, body.theme-dark #post h2.post-title {
     color: #bcbcbc;
@@ -1961,7 +1964,7 @@ body.theme-dark #index .page-navigator li a:hover,body.theme-dark #archive .page
     background: #474747;
 }
 body.theme-dark #index .page-navigator li a,body.theme-dark #archive .page-navigator li a {
-    color: #bcbcbc;
+    color: #fff;
 }
 body.theme-dark .post-content {
     color: #bcbcbc;
@@ -2017,7 +2020,7 @@ body.theme-dark .post-content table tr:nth-child(2n) {
 body.theme-dark .post-content table thead>tr{
     background-color: rgba(255,255,255,0.06);
 }
-body.theme-dark .post-content hr {
+body.theme-dark .post-content hr, body.theme-dark #index .post-content hr,body.theme-dark #index .comment-content hr,body.theme-dark #archive .post-content hr,body.theme-dark #archive .comment-content hr {
     background: #2c2a2a repeating-linear-gradient(-45deg, #bcbcbc, #bcbcbc 4px, transparent 4px, transparent 8px);
 }
 body.theme-dark .post-content blockquote {

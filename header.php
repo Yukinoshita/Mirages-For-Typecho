@@ -22,12 +22,17 @@
     } elseif ($this->options->baseTheme == THEME_MIRAGES_DARK) {
         define("THEME_CLASS", "theme-dark");
     }
+    if(isHexColor($this->options->themeColor)) {
+        $colorClass = "color-custom";
+    } else {
+        $colorClass = "color-default";
+    }
     $this->need('head.php');
     $this->need('headfix.php');
     $showBanner = (strlen($this->banner) > 5);
 ?>
 </head>
-<body class="<?=THEME_CLASS?>">
+<body class="<?=THEME_CLASS." ".$colorClass?>">
 <?php if($this->options->disableAutoNightTheme <= 0 && !hasValue($this->options->disqusShortName) && THEME_CLASS != "theme-dark"):?>
     <script>
         if (USE_MIRAGES_DARK) {
