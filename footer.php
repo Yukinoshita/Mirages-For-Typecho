@@ -38,7 +38,7 @@
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = '<?=$this->options->disqusShortName?>'; // required: replace example with your forum shortname
-
+            window.DISQUSWIDGETS = undefined;
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function () {
                 var s = document.createElement('script'); s.async = true;
@@ -72,7 +72,9 @@ if(isset($this->fields->js)) {
 </div>
 <?php $this->footer(); ?>
 <script type="text/javascript" class="n-progress">NProgress.inc(0.8);</script>
-<?php if(hasValue($this->options->duoshuoShortName)):?>
+<?php if(hasValue($this->options->disqusShortName)):?>
+
+<?php elseif(hasValue($this->options->duoshuoShortName)):?>
     <!-- 多说js加载开始，一个页面只需要加载一次 -->
     <script type="text/javascript">
         var duoshuoQuery = {short_name:"<?=$this->options->duoshuoShortName ?>"};
@@ -90,8 +92,7 @@ if(isset($this->fields->js)) {
     </script>
     <!-- 多说js加载结束，一个页面只需要加载一次 -->
     <link rel="stylesheet" href="<?= STATIC_PATH ?>css/duoshuo.css">
-
-    <?php endif?>
+<?php endif?>
 <script src="//cdn.bootcss.com/github-repo-widget/e23d85ab8f/jquery.githubRepoWidget.min.js" type="text/javascript"></script>
 <?php if(PJAX_ENABLED):?>
 <script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js" type="text/javascript"></script>
@@ -161,6 +162,20 @@ if(isset($this->fields->js)) {
             DUOSHUO.EmbedThread($('.ds-thread'));
             DUOSHUO.ThreadCount($('.ds-thread-count'));
         };
+        var pjax_loadDisqus = function () {
+            if($('#disqus_thread').length) {
+                if(window.DISQUS) {
+                    DISQUS.reset({
+                        reload: true
+                    });
+                } else {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + '<?=$this->options->disqusShortName?>' + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                }
+            }
+        };
+        pjax_loadDisqus();
         var body_am = function(id) {
             id = isNaN(id) ? $('#' + id).offset().top : id;
             $("body,html").animate({
@@ -230,7 +245,9 @@ if(isset($this->fields->js)) {
             var currentHref = document.location.pathname + document.location.search + document.location.hash;
             _czc.push(﻿['_trackPageview', currentHref, refer]);
             _hmt.push(['_trackPageview', currentHref]);
-            <?php if(hasValue($this->options->duoshuoShortName)):?>
+            <?php if (hasValue($this->options->disqusShortName)):?>
+            pjax_loadDisqus();
+            <?php elseif (hasValue($this->options->duoshuoShortName)):?>
             pajx_loadDuoshuo();
             <?php endif?>
             setupImages();
