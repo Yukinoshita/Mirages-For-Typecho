@@ -33,17 +33,69 @@
 </div>
 <?php endif?>
 </div>
+<?php if($this->is('index') || $this->is('category') || $this->is('tag')):?>
+    <?php if(hasValue($this->options->disqusShortName)):?>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = '<?=$this->options->disqusShortName?>'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+    <?php endif?>
+<?php endif?>
+<?php
+if(isset($this->fields->js)) {
+    echo "<script type=\"text/javascript\">\n";
+    echo $this->fields->js;
+    echo "\n</script>\n";
+}
+?>
 </div><!-- end #body -->
+<?php if(!isPjax() || !PJAX_ENABLED):?>
 </div><!-- end #wrap -->
 <footer id="footer" role="contentinfo">
     <div class="container">
         <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • All Rights Reserved.</p>
-        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a href="http://hran.me/mirages.html">Mirages</a></p>
+        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a href="http://hran.me/mirages.html?copyright&v=140">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
 <?php $this->footer(); ?>
-<script type="text/javascript">NProgress.inc(0.8);</script>
+<script type="text/javascript" class="n-progress">NProgress.inc(0.8);</script>
+<?php if(hasValue($this->options->duoshuoShortName)):?>
+    <!-- 多说js加载开始，一个页面只需要加载一次 -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"<?=$this->options->duoshuoShortName ?>"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            <?php if(strlen($this->options->duoshuoCustomEmbedJs) > 0):?>
+            ds.src = "<?=(startsWith($this->options->duoshuoCustomEmbedJs, 'http://') || startsWith($this->options->duoshuoCustomEmbedJs, 'https://') || startsWith($this->options->duoshuoCustomEmbedJs, '//')) ? $this->options->duoshuoCustomEmbedJs : '//'.$this->options->duoshuoCustomEmbedJs ?>";
+            <?php else:?>
+            ds.src = '//static.duoshuo.com/embed.js';
+            <?php endif;?>
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说js加载结束，一个页面只需要加载一次 -->
+    <link rel="stylesheet" href="<?= STATIC_PATH ?>css/duoshuo.css">
+
+    <?php endif?>
 <script src="//cdn.bootcss.com/github-repo-widget/e23d85ab8f/jquery.githubRepoWidget.min.js" type="text/javascript"></script>
+<?php if(PJAX_ENABLED):?>
+<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js" type="text/javascript"></script>
+<?php endif?>
 <?php if(!isMobile()):?>
 <?php endif?>
 <script src="<?= STATIC_PATH ?>js/waves.min.js"></script>
@@ -63,91 +115,135 @@
 <script src="<?= STATIC_PATH ?>js/sscr.js"></script>
 <?php endif?>
 
-<script type="text/javascript">NProgress.done();</script>
-<?php if($this->is('index') || $this->is('category') || $this->is('tag')):?>
-    <?php if(strlen($this->options->disqusShortName) > 0):?>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = '<?=$this->options->disqusShortName?>'; // required: replace example with your forum shortname
+<script type="text/javascript" class="n-progress">NProgress.done();</script>
 
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function () {
-                var s = document.createElement('script'); s.async = true;
-                s.type = 'text/javascript';
-                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }());
-        </script>
-    <?php elseif(strlen($this->options->duoshuoShortName) > 0):?>
-        <!-- 多说js加载开始，一个页面只需要加载一次 -->
-        <script type="text/javascript">
-            var duoshuoQuery = {short_name:"<?=$this->options->duoshuoShortName ?>"};
-            (function() {
-                var ds = document.createElement('script');
-                ds.type = 'text/javascript';ds.async = true;
-                <?php if(strlen($this->options->duoshuoCustomEmbedJs) > 0):?>
-                ds.src = "<?=(startsWith($this->options->duoshuoCustomEmbedJs, 'http://') || startsWith($this->options->duoshuoCustomEmbedJs, 'https://') || startsWith($this->options->duoshuoCustomEmbedJs, '//')) ? $this->options->duoshuoCustomEmbedJs : '//'.$this->options->duoshuoCustomEmbedJs ?>";
-                <?php else:?>
-                ds.src = '//static.duoshuo.com/embed.js';
-                <?php endif;?>
-                ds.charset = 'UTF-8';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-        </script>
-        <!-- 多说js加载结束，一个页面只需要加载一次 -->
-    <?php endif?>
-<?php endif?>
 <script type="text/javascript">
-    <?php if((!empty($this->options->otherOptions) && in_array('useQiniuImageResize', $this->options->otherOptions))):?>
-    var getPostImageAddon = function(){
-        var addon = "?";
-        var ratio = window.devicePixelRatio || 1;
-        width = window.innerWidth || 0;
-        height = window.innerHeight || 0;
-        if(width == 0 || height == 0){
-            return "";
-        }
-        var format = "";
-        <?php if(!empty($this->options->otherOptions) && in_array('enableWebP', $this->options->otherOptions) && shouldEnableWebP()):?>
-        format = "/format/webp";
+    (function ($) {
+        var getPostImageAddon = function(){
+            var addon = "?";
+            var ratio = window.devicePixelRatio || 1;
+            width = window.innerWidth || 0;
+            height = window.innerHeight || 0;
+            if(width == 0 || height == 0){
+                return "";
+            }
+            var format = "";
+            <?php if(!empty($this->options->otherOptions) && in_array('enableWebP', $this->options->otherOptions) && shouldEnableWebP()):?>
+            format = "/format/webp";
+            <?php endif?>
+            if(width > height){
+                addon += "imageView2/2/h/"+ parseInt(height * ratio) + "/q/75" + format;
+            }else{
+                addon += "imageView2/2/w/"+ parseInt(width * ratio) + "/q/75" + format;
+            }
+            return addon;
+        };
+        var setupImages = function () {
+            var addon = getPostImageAddon();
+            $("article img").each(function() {
+                var src = $(this).attr('data-src');
+                if (src != null && src != undefined && src != "") {
+                    $(this).attr('src', src + addon);
+                    $(this).removeAttr('data-src');
+                }
+            });
+        };
+        <?php if((!empty($this->options->otherOptions) && in_array('useQiniuImageResize', $this->options->otherOptions))):?>
+        setupImages();
         <?php endif?>
-        if(width > height){
-            addon += "imageView2/2/h/"+ parseInt(height * ratio) + "/q/75" + format;
-        }else{
-            addon += "imageView2/2/w/"+ parseInt(width * ratio) + "/q/75" + format;
-        }
-        return addon;
-    };
-    var addon = getPostImageAddon();
-    $("article img").each(function() {
-        var src = $(this).attr('data-src');
-        if (src != null && src != undefined && src != "") {
-            $(this).attr('src', src + addon);
-            $(this).removeAttr('data-src');
-        }
-    });
-    <?php endif?>
-    $("article img:not(article .link-box img)").each(function() {
-        $(this).attr('data-action', 'zoom');
-        if($(this).next().is('br')){
-            $(this).next().remove();
-        }
-    });
-    String.prototype.startWith = function(str){
-        if (str == null || str == "" || this.length == 0 || str.length > this.length) {
+        String.prototype.startWith = function(str){
+            if (str == null || str == "" || this.length == 0 || str.length > this.length) {
+                return false;
+            }
+            return this.substr(0, str.length) == str;
+        };
+        var pajx_loadDuoshuo = function(){
+            DUOSHUO.EmbedThread($('.ds-thread'));
+            DUOSHUO.ThreadCount($('.ds-thread-count'));
+        };
+        var body_am = function(id) {
+            id = isNaN(id) ? $('#' + id).offset().top : id;
+            $("body,html").animate({
+                scrollTop: id
+            }, 0);
             return false;
-        }
-        return this.substr(0, str.length) == str;
-    };
-    $(".post-content a, #content a").each(function() {
-        var href = $(this).attr('href');
-        if (href.startWith("http")) {
-            $(this).attr('target', "_blank");
-        }
-    });
-    $(".post-content p.more a").each(function() {
-        $(this).removeAttr("target")
-    });
+        };
+        var to_am = function() {
+            var anchor = location.hash.indexOf('#'); // 用indexOf检查location.href中是否含有'#'号，如果没有则返回值为-1
+            if (anchor < 0) {
+                return;
+            }
+            anchor = window.location.hash.substring(anchor + 1);
+            body_am(anchor);
+        };
+        var setupContents = function () {
+            $("article img:not(article .link-box img)").each(function() {
+                $(this).attr('data-action', 'zoom');
+                if($(this).next().is('br')){
+                    $(this).next().remove();
+                }
+            });
+            $(".post-content a, #content a").each(function() {
+                var href = $(this).attr('href');
+                if (href.startWith("http")) {
+                    $(this).attr('target', "_blank");
+                }
+            });
+            $(".post-content p.more a").each(function() {
+                $(this).removeAttr("target")
+            });
+        };
+        var reHighlightCodeBlock = function () {
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        };
+        var resetStatus = function () {
+            $('#wrap').removeClass('display-nav');
+            $('#footer').removeClass('display-nav');
+            $('#body').off('click');
+            $('body').removeClass('show-reward-qr-box').removeClass('show-post-qr-box');
+        };
+        var rebindEvents = function () {
+            $('#toggle-post-qr-code').off('click').on('click', function (e) {
+                $('body').removeClass('show-reward-qr-box').toggleClass('show-post-qr-box');
+            });
+            $('#toggle-reward-qr-code').off('click').on('click', function (e) {
+                $('body').removeClass('show-post-qr-box').toggleClass('show-reward-qr-box');
+            });
+        };
+        setupContents();
+        <?php if(PJAX_ENABLED):?>
+        $('body').pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"])', {
+                container: '#body',
+                fragment: '#body',
+                timeout: 8000
+            }
+        ).on('pjax:click', function() {
+            $('body').attr('data-prev-href', document.location.pathname + document.location.search + document.location.hash);
+        }).on('pjax:send', function() {
+            $('#loader-wrapper').show();
+            resetStatus();
+        }).on('pjax:complete', function() {
+            $('#loader-wrapper').hide();
+            var refer = $('body').attr('data-prev-href');
+            var currentHref = document.location.pathname + document.location.search + document.location.hash;
+            _czc.push(﻿['_trackPageview', currentHref, refer]);
+            _hmt.push(['_trackPageview', currentHref]);
+            <?php if(hasValue($this->options->duoshuoShortName)):?>
+            pajx_loadDuoshuo();
+            <?php endif?>
+            setupImages();
+            setupContents();
+            reHighlightCodeBlock();
+            rebindEvents();
+            to_am();
+        });
+        <?php endif?>
+        $(document).ready(function () {
+            $('.n-progress').remove();
+        });
+    })(jQuery);
 </script>
 <script>
     var fontname;
@@ -175,15 +271,10 @@ if(isset($this->options->customJs)) {
     echo $this->options->customJs;
     echo "\n</script>\n";
 }
-if(isset($this->fields->js)) {
-    echo "<script type=\"text/javascript\">\n";
-    echo $this->fields->js;
-    echo "\n</script>\n";
-}
-
 if(isset($this->options->beforeBodyClose)) {
     echo $this->options->beforeBodyClose;
 }
 ?>
 </body>
 </html>
+<?php endif?>

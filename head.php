@@ -1,13 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php
-$this->ddb = $this->db;
-@$if_https = $_SERVER['HTTPS'];	//这样就不会有错误提示
-if ($if_https) {	//如果是使用 https 访问的话就添加 https
-    define('IS_HTTPS', true);
-} else {
-    define('IS_HTTPS', false);
-}
-
 if (IS_HTTPS) {
     $highlightJSPath = "//cdn.bootcss.com/highlight.js/9.2.0/";
 } else {
@@ -90,43 +82,7 @@ foreach ($addOnHighlightLang as $url) {
     <?php if(IS_HTTPS):?>
     IS_HTTPS = true;
     <?php endif?>
-
-    var bg = "<?php
-        if($this->is("index")){
-            $this->banner = Helper::options()->defaultBg;
-        } else {
-            $this->banner = loadArchiveBanner($this);
-        }
-        echo $this->banner;
-        ?>";
-    var getBgHeight = function(windowHeight){
-        windowHeight = windowHeight || 560;
-        if (windowHeight > window.screen.availHeight) {
-            windowHeight = window.screen.availHeight;
-        }
-        <?php if(isset($this->fields->bannerHeight)):?>
-        var bgHeightP = "<?=$this->fields->bannerHeight?>";
-        <?php else:?>
-        var bgHeightP = "<?=$this->options->defaultBgHeight?>";
-        <?php endif?>
-        bgHeightP = bgHeightP.trim();
-        bgHeightP = parseFloat(bgHeightP);
-        bgHeightP =  windowHeight * bgHeightP / 100;
-
-        return bgHeightP;
-    };
-    <?php if((!empty($this->options->otherOptions) && in_array('useQiniuImageResize', $this->options->otherOptions))):?>
-    var addon = getImageAddon(width, height);
-    bg = bg.trim();
-    bg += addon;
-    <?php endif?>
 </script>
-<?php if(isMobile()):?>
-<!--    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300italic,300,400,400italic&subset=latin,latin-ext">-->
-<?php else:?>
-<!--    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300italic,300,400,400italic&subset=latin,latin-ext">-->
-<!--    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:100,300,400,600&subset=latin,latin-ext">-->
-<?php endif?>
 <!-- 使用url函数转换相关路径 -->
 <link rel="stylesheet" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css">
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -185,7 +141,10 @@ foreach ($addOnHighlightLang as $url) {
 <!-- 通过自有函数输出HTML头部信息 -->
 <?php $this->header("generator=&");echo "\n"; ?>
 <?php if(!$this->user->hasLogin()):?>
-<script>
     <?php $this->options->tongJi();echo "\n"; ?>
-</script>
 <?php endif?>
+<script>
+    //声明_czc对象:
+    var _czc = _czc || [];
+    var _hmt = _hmt || [];
+</script>
