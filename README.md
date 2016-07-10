@@ -10,13 +10,13 @@
 
 图：
 
-![首页](https://o4uhjo7cq.qnssl.com/hran/2016/05/27/146434006570435_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-27%20%E4%B8%8B%E5%8D%884.47.54.png?imageView2/2/h/720/q/75)
+![首页](http://duanjstatic.qiniudn.com/hran/2016/05/27/146434006570435_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-27%20%E4%B8%8B%E5%8D%884.47.54.png?imageView2/2/h/720/q/75)
 
-![侧边栏](https://o4uhjo7cq.qnssl.com/hran/2016/05/27/146434008596701_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-27%20%E4%B8%8B%E5%8D%884.48.19.png?imageView2/2/h/720/q/75)
+![侧边栏](http://duanjstatic.qiniudn.com/hran/2016/05/27/146434008596701_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-27%20%E4%B8%8B%E5%8D%884.48.19.png?imageView2/2/h/720/q/75)
 
 没有头图的样子：
 
-![无头图首页预览](https://o4uhjo7cq.qnssl.com/hran/2016/05/29/146448528656032_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-29%20%E4%B8%8A%E5%8D%889.27.54.png?imageView2/2/h/720/q/75)
+![无头图首页预览](http://duanjstatic.qiniudn.com/hran/2016/05/29/146448528656032_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-05-29%20%E4%B8%8A%E5%8D%889.27.54.png?imageView2/2/h/720/q/75)
 
 ## 主题安装及使用帮助
 

@@ -4,11 +4,11 @@
  *
  * 详细的安装及升级帮助可以查看: <a href="https://github.com/Dalodd/Mirages-For-Typecho/wiki">这里</a>
  *
- * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info#comments">我的博客留言</a>
+ * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info&v=140#comments">我的博客留言</a>
  *
  * @package Mirages
  * @author Hran
- * @version 1.3.2
+ * @version 1.4.0
  * @link http://hran.me/?mirages
  */
 
@@ -25,9 +25,9 @@ $this->need('header.php');
 					<span itemprop="categoryPublished"><?php $this->category(','); ?></span>
 					<?php $parsed = parse_url($this->permalink);?>
 					<?php if(strlen($this->options->disqusShortName) > 0):?>
-						<span class="comments"><a href="<?php $this->permalink() ?>#disqus_thread" data-disqus-identifier="<?= $parsed['path'];?>">评论</a></a></span>
+						<span class="comments"><a href="<?php $this->permalink() ?>#disqus_thread" data-disqus-identifier="<?= $parsed['path'];?>"><?php _e('评论')?></a></span>
 					<?php elseif(strlen($this->options->duoshuoShortName) > 0):?>
-						<span class="comments"><a href="<?php $this->permalink() ?>#comments"><span class="ds-thread-count" data-thread-key="<?php echo $this->cid;?>" data-count-type="comments"></span></a></span>
+						<span class="comments"><a href="<?php $this->permalink() ?>#comments"><span class="ds-thread-count" data-thread-key="<?php echo $this->cid;?>" data-count-type="comments"><?php _e('评论')?></span></a></span>
 					<?php else:?>
 						<span class="comments"><a href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('评论', '1 条评论', '%d 条评论'); ?></a></span>
 					<?php endif?>
