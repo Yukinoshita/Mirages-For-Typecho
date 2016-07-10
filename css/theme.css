@@ -642,12 +642,11 @@ img[src*="Smilies"] {
 .post-content table {
     border-collapse: collapse;
     border-spacing: 0;
-    display: block;
+    display: table;
     overflow: auto;
     width: 100%;
     max-width: 100%;
     word-break: normal;
-    -webkit-overflow-scrolling: touch;
 }
 .post-content table th {
     font-weight: bold
@@ -666,6 +665,11 @@ img[src*="Smilies"] {
 }
 .post-content table thead>tr{
     background-color: #f8f8f8
+}
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /*Post Content - Code*/

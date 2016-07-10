@@ -66,12 +66,6 @@
                 $(this).toggleClass('hide');
             });
         });
-        $('#toggle-post-qr-code').off('click').on('click', function (e) {
-            $('body').removeClass('show-reward-qr-box').toggleClass('show-post-qr-box');
-        });
-        $('#toggle-reward-qr-code').off('click').on('click', function (e) {
-            $('body').removeClass('show-post-qr-box').toggleClass('show-reward-qr-box');
-        });
     });
     var hasTouchMove = false;
     if ("touchmove" in document.createElement("div")){

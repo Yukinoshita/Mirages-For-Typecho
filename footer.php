@@ -207,6 +207,7 @@ if(isset($this->fields->js)) {
             $(".post-content p.more a").each(function() {
                 $(this).removeAttr("target")
             });
+            $( ".post-content table" ).wrap( "<div class='table-responsive'></div>" );
         };
         var reHighlightCodeBlock = function () {
             $('pre code').each(function(i, block) {
@@ -221,13 +222,24 @@ if(isset($this->fields->js)) {
         };
         var rebindEvents = function () {
             $('#toggle-post-qr-code').off('click').on('click', function (e) {
-                $('body').removeClass('show-reward-qr-box').toggleClass('show-post-qr-box');
+                var body = $('body');
+                if (!body.hasClass('show-post-qr-box')) {
+                    _hmt.push(['_trackEvent', '按钮', '点击', '二维码']);
+                    _czc.push(['_trackEvent', '按钮', '点击', '二维码']);
+                }
+                body.removeClass('show-reward-qr-box').toggleClass('show-post-qr-box');
             });
             $('#toggle-reward-qr-code').off('click').on('click', function (e) {
-                $('body').removeClass('show-post-qr-box').toggleClass('show-reward-qr-box');
+                var body = $('body');
+                if (!body.hasClass('show-reward-qr-box')) {
+                    _hmt.push(['_trackEvent', '按钮', '点击', '打赏']);
+                    _czc.push(['_trackEvent', '按钮', '点击', '打赏']);
+                }
+                body.removeClass('show-post-qr-box').toggleClass('show-reward-qr-box');
             });
         };
         setupContents();
+        rebindEvents();
         <?php if(PJAX_ENABLED):?>
         $('body').pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"])', {
                 container: '#body',
