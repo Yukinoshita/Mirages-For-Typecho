@@ -93,7 +93,6 @@ if(isset($this->fields->js)) {
     <!-- 多说js加载结束，一个页面只需要加载一次 -->
     <link rel="stylesheet" href="<?= STATIC_PATH ?>css/duoshuo.css">
 <?php endif?>
-<script src="//cdn.bootcss.com/github-repo-widget/e23d85ab8f/jquery.githubRepoWidget.min.js" type="text/javascript"></script>
 <?php if(PJAX_ENABLED):?>
 <script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js" type="text/javascript"></script>
 <?php endif?>
@@ -107,7 +106,11 @@ if(isset($this->fields->js)) {
 <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="http://apps.bdimg.com/libs/headroom/0.5.0/headroom.min.js" type="text/javascript"></script>
 <?php endif?>
-<script data-no-instant>
+<script src="//cdn.bootcss.com/github-repo-widget/e23d85ab8f/jquery.githubRepoWidget.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/pangu/3.2.1/pangu.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    pangu.spacingElementById('body');
     Waves.displayEffect();
 </script>
 <script src="<?= STATIC_PATH ?>js/zoom.min.js" type="text/javascript"></script>
@@ -236,6 +239,7 @@ if(isset($this->fields->js)) {
                     _czc.push(['_trackEvent', '按钮', '点击', '打赏']);
                 }
                 body.removeClass('show-post-qr-box').toggleClass('show-reward-qr-box');
+
             });
         };
         setupContents();
@@ -257,6 +261,7 @@ if(isset($this->fields->js)) {
             var currentHref = document.location.pathname + document.location.search + document.location.hash;
             _czc.push(﻿['_trackPageview', currentHref, refer]);
             _hmt.push(['_trackPageview', currentHref]);
+            pangu.spacingElementById('body');
             <?php if (hasValue($this->options->disqusShortName)):?>
             pjax_loadDisqus();
             <?php elseif (hasValue($this->options->duoshuoShortName)):?>

@@ -37,7 +37,7 @@
 - PJAX 需到`设置外观`启用
 
 - 目前: 搜索、自带评论未使用 PJAX
- 
+
 - 本模板已为百度统计、CNZZ 优化, 未优化的统计代码在启用 PJAX 后仅能统计到第一次访问时的浏览, 其他统计代码请参考其 API 自行处理。
 
 ### 2016-07-01 日更新
@@ -65,9 +65,9 @@
 - 修复了部分样式问题
 
 - 更新duoshuo.css, 添加博主标识
-  
+
   你需要到duoshuo.css文件里，修改第一行中的`[data-user-id='0']:after` 中的`user-id`为你自己的User ID。
-  
+
 ### 2016-05-28 日更新
 
 - 添加了多说评论的支持
@@ -76,3 +76,9 @@
 
   主题内置了多说的自定义外观，需要的请将`css/duoshuo.css`中的内容拷贝到**多说后台(http://yourdomain.duoshuo.com/admin/settings/)**的自定义CSS处，然后保存。**该自定义外观基于多说官方的暗色线框主题，**因此请在后台(http://yourdomain.duoshuo.com/admin/settings/themes/)启用暗色线框主题。
 
+
+
+
+## License
+
+Mirages-For-Typecho is released under the terms of the [GNU General Public License v3.0](https://github.com/Dalodd/Mirages-For-Typecho/blob/master/LICENSE)

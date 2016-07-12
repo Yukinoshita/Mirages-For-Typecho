@@ -136,9 +136,6 @@
 
 <?php if(isMobile()):?>
     /*移动端*/
-    body {
-        font-weight: normal;
-    }
     html, body, div, p, ol, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td, blockquote, img{
         -webkit-font-smoothing: auto !important;
     }
@@ -185,15 +182,6 @@
         -webkit-transform: translateY(-4px);
         transform: translateY(-4px);
         -moz-transform: none;
-    }
-    body.color-orange #index .post .post-title:hover,#archive .post .post-title:hover {
-        color: #f5871f;
-    }
-    body.color-orange #index .more>a:hover,#archive .more>a:hover {
-        color: #FFF !important;
-        border: 1px solid #f5871f;
-        background-color: rgba(245, 135, 31, 0.5);
-        width: 250px;
     }
 <?php endif?>
 <?php if(isPhone()):?>
