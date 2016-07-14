@@ -288,10 +288,12 @@
 <?php endif?>
 <?php if(isWindows()): ?>
     /*Windows*/
+    .post-content p {
+        letter-spacing: 0;
+    }
     @media screen and (min-width: 1600px){
         .post-content p {
-            font-size: 1.13em;
-            letter-spacing: 1.5px;
+            /*font-size: 1.13em;*/
         }
         #index .more>a, #archive .more>a {
             width: 220px;
@@ -364,9 +366,9 @@
             font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
         }
     }
-    .post-content p {
-        letter-spacing: 1px;
-    }
+    /*.post-content p {*/
+        /*letter-spacing: 1px;*/
+    /*}*/
     #index .more>a, #archive .more>a {
         letter-spacing: 0;
     }

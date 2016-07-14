@@ -62,7 +62,7 @@ if(isset($this->fields->js)) {
 <footer id="footer" role="contentinfo">
     <div class="container">
         <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • All Rights Reserved.</p>
-        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a href="http://hran.me/mirages.html?copyright&v=140">Mirages</a></p>
+        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a no-pjax href="http://hran.me/mirages.html?copyright&v=140">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
 <div id="loader-wrapper">
@@ -77,7 +77,7 @@ if(isset($this->fields->js)) {
 <?php elseif(hasValue($this->options->duoshuoShortName)):?>
     <!-- 多说js加载开始，一个页面只需要加载一次 -->
     <script type="text/javascript">
-        var duoshuoQuery = {short_name:"<?=$this->options->duoshuoShortName ?>"};
+        var duoshuoQuery = {short_name:"<?=$this->options->duoshuoShortName ?>", theme:'none'};
         (function() {
             var ds = document.createElement('script');
             ds.type = 'text/javascript';ds.async = true;
@@ -91,7 +91,6 @@ if(isset($this->fields->js)) {
         })();
     </script>
     <!-- 多说js加载结束，一个页面只需要加载一次 -->
-    <link rel="stylesheet" href="<?= STATIC_PATH ?>css/duoshuo.css">
 <?php endif?>
 <?php if(PJAX_ENABLED):?>
 <script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js" type="text/javascript"></script>
@@ -245,7 +244,7 @@ if(isset($this->fields->js)) {
         setupContents();
         rebindEvents();
         <?php if(PJAX_ENABLED):?>
-        $('body').pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"])', {
+        $('body').pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], a[no-pjax])', {
                 container: '#body',
                 fragment: '#body',
                 timeout: 8000
@@ -272,6 +271,9 @@ if(isset($this->fields->js)) {
             reHighlightCodeBlock();
             rebindEvents();
             to_am();
+            <?php if((!empty($this->options->otherOptions) && in_array('showJax', $this->options->otherOptions))):?>
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub,"body"]);
+            <?php endif?>
         });
         <?php endif?>
         $(document).ready(function () {

@@ -716,7 +716,7 @@ img[src*="Smilies"] {
 }
 .post-content pre>code {
     white-space: pre;
-    font-size: 1em;
+    font-size: .95em;
 }
 .post-content pre code:before,.post-content pre code:after {
     content: normal
@@ -1628,6 +1628,15 @@ body.show-post-qr-box #body-bottom, body.show-reward-qr-box #body-bottom {
     width: 100%;
     height: 100%;
     z-index: 1000;
+    background-color: #fff;
+}
+
+@supports (-webkit-backdrop-filter: brightness(150%) blur(30px)) or (backdrop-filter: brightness(150%) blur(30px)){
+    #loader-wrapper {
+        background-color: rgba(255, 255, 255, 0.3);
+        -webkit-backdrop-filter: brightness(150%) blur(30px);
+        backdrop-filter: brightness(150%) blur(30px);
+    }
 }
 
 #loader {
@@ -1723,7 +1732,6 @@ body.show-post-qr-box #body-bottom, body.show-reward-qr-box #body-bottom {
     top: 0;
     width: 51%;
     height: 100%;
-    background: #fff;
     z-index: 1000;
 }
 
@@ -1784,6 +1792,51 @@ body.show-post-qr-box #body-bottom, body.show-reward-qr-box #body-bottom {
     /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
 }
 /* Loader End */
+
+/* Highlight.css */
+.hljs-comment,.hljs-quote {
+    color:#8e908c
+}
+.hljs-variable,.hljs-template-variable,.hljs-tag,.hljs-name,.hljs-selector-id,.hljs-selector-class,.hljs-regexp,.hljs-deletion {
+    color:#c82829
+}
+.hljs-number,.hljs-built_in,.hljs-builtin-name,.hljs-literal,.hljs-type,.hljs-params,.hljs-meta,.hljs-link {
+    color:#f5871f
+}
+.hljs-attribute {
+    color:#eab700
+}
+.hljs-string,.hljs-symbol,.hljs-bullet,.hljs-addition {
+    color:#718c00
+}
+.hljs-title,.hljs-section {
+    color:#4271ae
+}
+.hljs-keyword,.hljs-selector-tag {
+    color:#8959a8
+}
+.hljs {
+    display:block;
+    overflow-x:auto;
+    background:white;
+    color:#4d4d4c;
+    padding:0.5em
+}
+.hljs-emphasis {
+    font-style:italic
+}
+.hljs-strong {
+    font-weight:bold
+}
+.diff .hljs-header,.hljs-javadoc {
+    font-style: italic;
+}
+.hljs-keyword,.css .rule .hljs-keyword,.hljs-winutils,.nginx .hljs-title,.hljs-subst,.hljs-request,.hljs-status,
+.hljs-title,.hljs-id,.scss .hljs-preprocessor,.hljs-class .hljs-title,.hljs-type,.vhdl .hljs-literal,.tex .hljs-command,
+.hljs-regexp,.hljs-preprocessor,.hljs-pragma,.hljs-pi,.hljs-doctype,.hljs-shebang,.hljs-cdata {
+    font-weight: bold;
+}
+/* Highlight.css End*/
 
 /*Github Widget*/
 .github-widget a {
@@ -2265,7 +2318,40 @@ body.theme-dark .post-buttons a:hover {
 body.theme-dark #qr-box {
     background-color: #191919;
 }
-body.theme-dark #loader-wrapper .loader-section {
-    background: #2C2A2A;
+body.theme-dark #loader-wrapper {
+    background-color: #2c2a2a;
+}
+@supports (-webkit-backdrop-filter: brightness(150%) blur(30px)) or (backdrop-filter: brightness(150%) blur(30px)){
+    body.theme-dark #loader-wrapper {
+        background: rgba(44, 42, 42, 0.3);
+    }
 }
 /* Theme Dark End */
+
+/* Theme Dark Highlight */
+body.theme-dark .hljs-comment,body.theme-dark .hljs-quote {
+    color:#999999
+}
+body.theme-dark .hljs-variable,body.theme-dark .hljs-template-variable,body.theme-dark .hljs-tag,body.theme-dark .hljs-name, body.theme-dark .hljs-selector-id, body.theme-dark .hljs-selector-class, body.theme-dark .hljs-regexp, body.theme-dark .hljs-deletion {
+    color:#f2777a
+}
+body.theme-dark .hljs-number, body.theme-dark .hljs-built_in, body.theme-dark .hljs-builtin-name, body.theme-dark .hljs-literal, body.theme-dark .hljs-type, body.theme-dark .hljs-params, body.theme-dark .hljs-meta, body.theme-dark .hljs-link {
+    color:#f99157
+}
+body.theme-dark .hljs-attribute {
+    color:#ffcc66
+}
+body.theme-dark .hljs-string, body.theme-dark .hljs-symbol, body.theme-dark .hljs-bullet, body.theme-dark .hljs-addition {
+    color:#99cc99
+}
+body.theme-dark .hljs-title, body.theme-dark .hljs-section {
+    color:#6699cc
+}
+body.theme-dark .hljs-keyword, body.theme-dark .hljs-selector-tag {
+    color:#cc99cc
+}
+body.theme-dark .hljs {
+    background:#2d2d2d;
+    color:#cccccc;
+}
+/* Theme Dark Highlight End */

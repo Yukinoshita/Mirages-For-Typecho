@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php
 if (IS_HTTPS) {
-    $highlightJSPath = "//cdn.bootcss.com/highlight.js/9.2.0/";
+    $highlightJSPath = "//cdn.bootcss.com/highlight.js/9.5.0/";
 } else {
     $highlightJSPath = "http://apps.bdimg.com/libs/highlight.js/9.1.0/";
 }
@@ -94,22 +94,20 @@ foreach ($addOnHighlightLang as $url) {
 <link rel="stylesheet" href="http://apps.bdimg.com/libs/nprogress/0.1.2/nprogress.css">
 <?php endif?>
 
-<?php if(THEME_CLASS == "theme-dark"):?>
-    <link rel="stylesheet" href="<?=$highlightJSPath?>styles/tomorrow-night-eighties.min.css">
-<?php else:?>
-    <link rel="stylesheet" href="<?=$highlightJSPath?>styles/tomorrow.min.css">
-<?php endif?>
 <?php if($this->options->disableAutoNightTheme <= 0 && !hasValue($this->options->disqusShortName) && THEME_CLASS != "theme-dark"):?>
     <script>
         var hour = new Date().getHours();
         var USE_MIRAGES_DARK = false;
         if (hour <= 5 || hour >= 22) {
             USE_MIRAGES_DARK = true;
-            injectStyle("<?=$highlightJSPath?>styles/tomorrow-night-eighties.min.css");
         }
     </script>
 <?php endif?>
 <link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme.css">
+<?php if (hasValue($this->options->disqusShortName)): ?>
+<?php elseif (hasValue($this->options->duoshuoShortName)): ?>
+<link rel="stylesheet" href="<?= STATIC_PATH ?>css/embed.duoshuo.min.css">
+<?php endif?>
 <?php if (strlen($this->options->shortcutIcon) > 5): ?>
 <link rel="shortcut icon" href="<?php $this->options->shortcutIcon(); ?>">
 <?php else:?>
