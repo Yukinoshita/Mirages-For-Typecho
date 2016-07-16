@@ -13,16 +13,16 @@ $highlightLanguages = array(
 );
 $rawContentText = $this->text;
 $rawContentText = strtolower($rawContentText);
-foreach ($highlightLanguages as $lang=>$url) {
-    $lang = '```'.strtolower($lang);
-    if(strpos($rawContentText,$lang) >= 0){
+foreach ($highlightLanguages as $lang => $url) {
+    $lang = '```' . strtolower($lang);
+    if (strpos($rawContentText, $lang) >= 0) {
         $addOnHighlightLang[] = $url;
     }
 }
 
 $addOnHighlightLangHtml = "";
 foreach ($addOnHighlightLang as $url) {
-    $addOnHighlightLangHtml .='<script src="'.$highlightJSPath . $url.'" type="text/javascript"></script>'."\n";
+    $addOnHighlightLangHtml .= '<script src="' . $highlightJSPath . $url . '" type="text/javascript"></script>' . "\n";
 }
 ?>
 <meta charset="<?php $this->options->charset(); ?>">
@@ -30,39 +30,39 @@ foreach ($addOnHighlightLang as $url) {
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title><?php $this->archiveTitle(array(
-        'category'  =>  _t('分类 %s 下的文章'),
-        'search'    =>  _t('包含关键字 %s 的文章'),
-        'tag'       =>  _t('标签 %s 下的文章'),
-        'author'    =>  _t('%s 发布的文章')
+        'category' => _t('分类 %s 下的文章'),
+        'search' => _t('包含关键字 %s 的文章'),
+        'tag' => _t('标签 %s 下的文章'),
+        'author' => _t('%s 发布的文章')
     ), '', ' - '); ?><?php $this->options->title(); ?></title>
-<?php $this->options->bowserInsight()?>
-<?php $this->options->customMeta()?>
+<?php $this->options->bowserInsight() ?>
+<?php $this->options->customMeta() ?>
 <script type="text/javascript">
     var BASE_SCRIPT_URL = "<?= STATIC_PATH ?>";
-    var width=window.screen.availWidth;
-    var height=window.screen.availHeight;
-    var injectStyle = function(css) {
+    var width = window.screen.availWidth;
+    var height = window.screen.availHeight;
+    var injectStyle = function (css) {
         var link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
         link.href = css;
         document.head.appendChild(link);
     };
-    var getImageAddon = function(width, height){
+    var getImageAddon = function (width, height) {
         var addon = "?";
         var ratio = window.devicePixelRatio || 1;
         width = width || 0;
         height = height || 0;
-        if(width == 0 && height == 0){
+        if (width == 0 && height == 0) {
             return "";
         }
         var format = "";
         <?php if(!empty($this->options->otherOptions) && in_array('enableWebP', $this->options->otherOptions) && shouldEnableWebP()):?>
         format = "/format/webp";
         <?php endif?>
-        if(width >= height){
-            addon += "imageView2/2/w/"+ parseInt(width * ratio) + "/q/75" + format;
-        }else{
-            addon += "imageView2/2/h/"+ parseInt(height * ratio) + "/q/75" + format;
+        if (width >= height) {
+            addon += "imageView2/2/w/" + parseInt(width * ratio) + "/q/75" + format;
+        } else {
+            addon += "imageView2/2/h/" + parseInt(height * ratio) + "/q/75" + format;
         }
         return addon;
     };
@@ -88,13 +88,13 @@ foreach ($addOnHighlightLang as $url) {
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?= STATIC_PATH ?>css/base.css">
 
-<?php if(IS_HTTPS): ?>
-<link rel="stylesheet" href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css">
-<?php else:?>
-<link rel="stylesheet" href="http://apps.bdimg.com/libs/nprogress/0.1.2/nprogress.css">
-<?php endif?>
+<?php if (IS_HTTPS): ?>
+    <link rel="stylesheet" href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css">
+<?php else: ?>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/nprogress/0.1.2/nprogress.css">
+<?php endif ?>
 
-<?php if($this->options->disableAutoNightTheme <= 0 && !hasValue($this->options->disqusShortName) && THEME_CLASS != "theme-dark"):?>
+<?php if ($this->options->disableAutoNightTheme <= 0 && !hasValue($this->options->disqusShortName) && THEME_CLASS != "theme-dark"): ?>
     <script>
         var hour = new Date().getHours();
         var USE_MIRAGES_DARK = false;
@@ -102,32 +102,40 @@ foreach ($addOnHighlightLang as $url) {
             USE_MIRAGES_DARK = true;
         }
     </script>
-<?php endif?>
+<?php endif ?>
 <link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme.min.css">
 <?php if (hasValue($this->options->disqusShortName)): ?>
 <?php elseif (hasValue($this->options->duoshuoShortName)): ?>
-<link rel="stylesheet" href="<?= STATIC_PATH ?>css/embed.duoshuo.min.css">
-<?php endif?>
+    <link rel="stylesheet" href="<?= STATIC_PATH ?>css/embed.duoshuo.min.css">
+<?php endif ?>
 <?php if (strlen($this->options->shortcutIcon) > 5): ?>
-<link rel="shortcut icon" href="<?php $this->options->shortcutIcon(); ?>">
-<?php else:?>
-<link rel="shortcut icon" href="<?php $this->options->siteUrl(); ?>favicon.ico">
-<?php endif?>
+    <link rel="shortcut icon" href="<?php $this->options->shortcutIcon(); ?>">
+<?php else: ?>
+    <link rel="shortcut icon" href="<?php $this->options->siteUrl(); ?>favicon.ico">
+<?php endif ?>
 
-<script src="<?=$highlightJSPath?>highlight.min.js" type="text/javascript"></script>
-<?php if(IS_HTTPS): ?>
-<script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js" type="text/javascript"></script>
-<?php else:?>
-<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-<script src="http://apps.bdimg.com/libs/nprogress/0.1.2/nprogress.js" type="text/javascript"></script>
-<?php endif?>
-<?=$addOnHighlightLangHtml; ?>
+<script src="<?= $highlightJSPath ?>highlight.min.js" type="text/javascript"></script>
+<?php if (IS_HTTPS): ?>
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js" type="text/javascript"></script>
+<?php else: ?>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/nprogress/0.1.2/nprogress.js" type="text/javascript"></script>
+<?php endif ?>
+<?= $addOnHighlightLangHtml; ?>
 
-<?php if((!empty($this->options->otherOptions) && in_array('showJax', $this->options->otherOptions))):?>
-<script src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js" type="text/javascript"></script>
-<script src="<?= STATIC_PATH ?>js/TeX-AMS-MML_HTMLorMML.js" type="text/javascript"></script>
-<?php endif?>
+<?php if ((!empty($this->options->texOptions) && in_array('showJax', $this->options->texOptions))): ?>
+    <?php if ((!empty($this->options->texOptions) && in_array('useDollarForInline', $this->options->texOptions))): ?>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+
+        </script>
+    <?php endif ?>
+    <script src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js" type="text/javascript"></script>
+    <script src="<?= STATIC_PATH ?>js/TeX-AMS-MML_HTMLorMML.js" type="text/javascript"></script>
+<?php endif ?>
 <script type="text/javascript">
     hljs.initHighlightingOnLoad();
 </script>
@@ -137,10 +145,12 @@ foreach ($addOnHighlightLang as $url) {
 <![endif]-->
 
 <!-- 通过自有函数输出HTML头部信息 -->
-<?php $this->header("generator=&");echo "\n"; ?>
-<?php if(!$this->user->hasLogin()):?>
-    <?php $this->options->tongJi();echo "\n"; ?>
-<?php endif?>
+<?php $this->header("generator=&");
+echo "\n"; ?>
+<?php if (!$this->user->hasLogin()): ?>
+    <?php $this->options->tongJi();
+    echo "\n"; ?>
+<?php endif ?>
 <script>
     //声明_czc对象:
     var _czc = _czc || [];

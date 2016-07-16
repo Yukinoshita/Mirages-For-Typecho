@@ -41,6 +41,17 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $form->addInput($postQRCodeURL);
     $rewardQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('rewardQRCodeURL', NULL, NULL, _t('打赏二维码图片地址'), _t("打赏二维码图片地址, 只支持放一张图片, 请用 PS 等软件拼合多张二维码。留空则不显示。"));
     $form->addInput($rewardQRCodeURL);
+
+    $texOptionsBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('texOptions',
+        array(
+            'showJax' => _t('显示数学公式 (MathJax)'),
+            'useDollarForInline' => _t("使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$ ... $</code> 输入行内公式"),
+        ),
+        array(), _t('数学公式支持'), _t("在启用「显示数学公式」后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$$ ... $$</code> 或 <code style='background-color: rgba(0, 0, 0, 0.117);'>\\\\[ ... \\\\]</code> 输入块级公式, 使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>\\\\( ... \\\\)</code> 输入行内公式。<br>".
+                                        "在启用了「使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$ ... $</code> 输入行内公式」选项后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$ ... $</code> 来输入行内公式, 但因为 <code style='background-color: rgba(0, 0, 0, 0.117);'>$</code> 符出现的可能比较频繁, 因此可能会造成误判的情况。<br>".
+                                        "如: <code style='background-color: rgba(0, 0, 0, 0.117);'>... the cost is $2.50 for the first one, and $2.00 for each additional one ...</code><br>".
+                                        "将会对 <code style='background-color: rgba(0, 0, 0, 0.117);'>2.50 for the first one, and </code> 进行解析。"));
+    $form->addInput($texOptionsBlock->multiMode());
     
     $shortcutIcon = new Typecho_Widget_Helper_Form_Element_Text('shortcutIcon', NULL, NULL, _t('Shortcut Icon'), _t('留空则使用根目录下的「favicon.ico」文件'));
     $form->addInput($shortcutIcon);
@@ -61,7 +72,6 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
 
     $otherOptionsBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('otherOptions',
         array(
-            'showJax' => _t('显示数学公式 (MathJax)'),
             'enableSSCROnWindows' => _t('为 Windows 平台的 Chrome 浏览器启用平滑滚动'),
             'useQiniuImageResize' => _t('为文章中的图片自动转换合适的大小和格式 (需要使用七牛云存储，配置见 readme.md)'),
             'enableWebP' => _t('启用 WebP 图像格式 (需要使用七牛云存储)'),

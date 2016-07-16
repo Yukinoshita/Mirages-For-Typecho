@@ -271,7 +271,7 @@ if(isset($this->fields->js)) {
             reHighlightCodeBlock();
             rebindEvents();
             to_am();
-            <?php if((!empty($this->options->otherOptions) && in_array('showJax', $this->options->otherOptions))):?>
+            <?php if((!empty($this->options->texOptions) && in_array('showJax', $this->options->texOptions))):?>
             MathJax.Hub.Queue(["Typeset",MathJax.Hub,"body"]);
             <?php endif?>
         });
