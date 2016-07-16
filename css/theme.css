@@ -755,6 +755,10 @@ img.paopao, #ds-thread #ds-reset .ds-comment-body img.paopao {
 .post-content .highlight pre {
     margin-bottom: 0;
 }
+.post-content .highlight-text {
+    background-color: #ff0 !important;
+    color: #333 !important;
+}
 
 /*Tags And Keywords*/
 #post .tags {

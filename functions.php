@@ -60,6 +60,7 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
         array(
             'enablePhonetic' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{拼音 : pin yin}}</code> 语法解析注音"),
             'enableDeleteLine' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~~要加删除线的内容~~</code> 语法解析删除线, 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\~</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~</code>"),
+            'enableHighlightText' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>==要高亮显示的内容==</code> 语法解析高亮 (荧光笔效果), 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\=</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>=</code>"),
         ),
         array(), _t('Markdown 语法扩展'));
     $form->addInput($markdownExtendBlock->multiMode());
@@ -368,6 +369,9 @@ function _renderPart($content) {
     if ((!empty($options->markdownExtend) && in_array('enableDeleteLine', $options->markdownExtend))) {
         $content = _renderDeleteTag($content);
     }
+    if ((!empty($options->markdownExtend) && in_array('enableHighlightText', $options->markdownExtend))) {
+        $content = _renderHighlight($content);
+    }
     $content = _renderCards($content);
     return $content;
 }
@@ -384,6 +388,11 @@ function _renderDeleteTag($content) {
     return $content;
 }
 
+function _renderHighlight($content) {
+    $content = preg_replace('/\=\=(.+?)\=\=/i', "<span class=\"highlight-text\">$1</span>", $content);
+    $content = str_replace('\=', '=', $content);
+    return $content;
+}
 
 function _renderCards($content) {
     $currentGroupId = 0;
