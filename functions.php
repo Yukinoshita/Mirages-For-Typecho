@@ -37,7 +37,10 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $duoshuoCustomAuthorId->input->setAttribute('class', 'mini');
     $form->addInput($duoshuoCustomAuthorId);
 
-    $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, 'http://b.bshare.cn/barCode?site=weixin&url={{%LINK}}', _t('本页二维码生成地址'), _t("使用占位符表示文章链接。留空则不显示。支持的占位符有: <br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%LINK}}</code>: 当前页链接<br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%BASE64_LINK}}</code>: Base64后的当前页链接<br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%BASE64_LINK_WITHOUT_SLASH}}</code>: Base64后的当前页链接, 使用`-`替换`/`。"));
+    $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, 'http://b.bshare.cn/barCode?site=weixin&url={{%LINK}}', _t('本页二维码生成地址'), _t("使用占位符表示文章链接。留空则不显示。支持的占位符有: <br>"
+        ."<code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{%LINK}}</code>: 当前页链接<br>"
+        ."<code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{%BASE64_LINK}}</code>: Base64后的当前页链接<br>"
+        ."<code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{%BASE64_LINK_WITHOUT_SLASH}}</code>: Base64后的当前页链接, 使用`-`替换`/`。"));
     $form->addInput($postQRCodeURL);
     $rewardQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('rewardQRCodeURL', NULL, NULL, _t('打赏二维码图片地址'), _t("打赏二维码图片地址, 只支持放一张图片, 请用 PS 等软件拼合多张二维码。留空则不显示。"));
     $form->addInput($rewardQRCodeURL);
@@ -45,14 +48,22 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $texOptionsBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('texOptions',
         array(
             'showJax' => _t('显示数学公式 (MathJax)'),
-            'useDollarForInline' => _t("使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$ ... $</code> 输入行内公式"),
+            'useDollarForInline' => _t("使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$ ... $</code> 输入行内公式"),
         ),
-        array(), _t('数学公式支持'), _t("在启用「显示数学公式」后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$$ ... $$</code> 或 <code style='background-color: rgba(0, 0, 0, 0.117);'>\\\\[ ... \\\\]</code> 输入块级公式, 使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>\\\\( ... \\\\)</code> 输入行内公式。<br>".
-                                        "在启用了「使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$ ... $</code> 输入行内公式」选项后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.117);'>$ ... $</code> 来输入行内公式, 但因为 <code style='background-color: rgba(0, 0, 0, 0.117);'>$</code> 符出现的可能比较频繁, 因此可能会造成误判的情况。<br>".
-                                        "如: <code style='background-color: rgba(0, 0, 0, 0.117);'>... the cost is $2.50 for the first one, and $2.00 for each additional one ...</code><br>".
-                                        "将会对 <code style='background-color: rgba(0, 0, 0, 0.117);'>2.50 for the first one, and </code> 进行解析。"));
+        array(), _t('数学公式支持'), _t("在启用「显示数学公式」后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$$ ... $$</code> 或 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\\\\[ ... \\\\]</code> 输入块级公式, 使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\\\\( ... \\\\)</code> 输入行内公式。<br>".
+            "在启用了「使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$ ... $</code> 输入行内公式」选项后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$ ... $</code> 来输入行内公式, 但因为 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$</code> 符出现的可能比较频繁, 因此可能会造成误判的情况。<br>".
+            "如: <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>... the cost is $2.50 for the first one, and $2.00 for each additional one ...</code><br>".
+            "将会对 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>2.50 for the first one, and </code> 进行解析。"));
     $form->addInput($texOptionsBlock->multiMode());
-    
+
+    $markdownExtendBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('markdownExtend',
+        array(
+            'enablePhonetic' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{拼音 : pin yin}}</code> 语法解析注音"),
+            'enableDeleteLine' => _t("添加 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~~要加删除线的内容~~</code> 语法解析删除线, 你可以在必要的时候使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\~</code> 转义以输出字符 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>~</code>"),
+        ),
+        array(), _t('Markdown 语法扩展'));
+    $form->addInput($markdownExtendBlock->multiMode());
+
     $shortcutIcon = new Typecho_Widget_Helper_Form_Element_Text('shortcutIcon', NULL, NULL, _t('Shortcut Icon'), _t('留空则使用根目录下的「favicon.ico」文件'));
     $form->addInput($shortcutIcon);
     $customMeta = new Typecho_Widget_Helper_Form_Element_Textarea('customMeta', NULL, NULL, _t('Custom Meta'), _t('在 html 的 head 的 meta 标签后添加，可以用于填写 apple-touch-icon 等'));
@@ -62,7 +73,7 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $form->addInput($tongJi);
     $bowserInsight = new Typecho_Widget_Helper_Form_Element_Textarea('bowserInsight', NULL, NULL, _t('Browser Insight'), NULL);
     $form->addInput($bowserInsight);
-    
+
     $customCss = new Typecho_Widget_Helper_Form_Element_Textarea('customCss', NULL, NULL, _t('自定义 CSS'), NULL);
     $form->addInput($customCss);
     $customJs = new Typecho_Widget_Helper_Form_Element_Textarea('customJs', NULL, NULL, _t('自定义 JS'), NULL);
@@ -350,7 +361,13 @@ function render($content) {
 }
 
 function _renderPart($content) {
-    $content = _renderPhonetic($content);
+    $options = Typecho_Widget::widget('Widget_Options');
+    if ((!empty($options->markdownExtend) && in_array('enablePhonetic', $options->markdownExtend))) {
+        $content = _renderPhonetic($content);
+    }
+    if ((!empty($options->markdownExtend) && in_array('enableDeleteLine', $options->markdownExtend))) {
+        $content = _renderDeleteTag($content);
+    }
     $content = _renderCards($content);
     return $content;
 }
@@ -358,6 +375,12 @@ function _renderPart($content) {
 function _renderPhonetic($content) {
     $content = preg_replace('/\{\{\s*([^\:]+?)\s*\:\s*([^}]+?)\s*\}\}/is',
         "<ruby>$1<rp> (</rp><rt>$2</rt><rp>) </rp></ruby>", $content);
+    return $content;
+}
+
+function _renderDeleteTag($content) {
+    $content = preg_replace('/\~\~(.+?)\~\~/i', "<del>$1</del>", $content);
+    $content = str_replace('\~', '~', $content);
     return $content;
 }
 
