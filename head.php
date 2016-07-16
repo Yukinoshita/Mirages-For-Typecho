@@ -103,7 +103,7 @@ foreach ($addOnHighlightLang as $url) {
         }
     </script>
 <?php endif?>
-<link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme.css">
+<link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme.min.css">
 <?php if (hasValue($this->options->disqusShortName)): ?>
 <?php elseif (hasValue($this->options->duoshuoShortName)): ?>
 <link rel="stylesheet" href="<?= STATIC_PATH ?>css/embed.duoshuo.min.css">

@@ -33,7 +33,7 @@ $this->need('header.php');
 					<?php endif?>
 				</div>
 				<div class="post-content" itemprop="description">
-					<p><?php $this->content("Continue Reading..."); ?></p>
+					<p><?= render(content($this, "Continue Reading...")); ?></p>
 				</div>
 			</div>
         </article>

@@ -10,7 +10,7 @@
         </h2>
         <?php endif?>
         <div class="post-content" itemprop="articleBody">
-            <?php echo renderCards($this->content) ?>
+            <?php echo render($this->content) ?>
         </div>
     </article>
 </div><!-- end #post-->

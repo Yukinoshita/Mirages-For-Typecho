@@ -522,6 +522,17 @@ img[src*="Smilies"] {
     display: block;
     margin: 20px auto;
 }
+img.biaoqing, #ds-thread #ds-reset .ds-comment-body img.biaoqing {
+    display: inline;
+    margin: 0;
+}
+img.paopao, #ds-thread #ds-reset .ds-comment-body img.paopao {
+    margin-bottom: -5px;
+    height: 32px;
+    width: 32px;
+    max-width: 32px;
+}
+
 
 /*Post Content - Head*/
 .post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
@@ -711,6 +722,7 @@ img[src*="Smilies"] {
     font-size: .85em
 }
 .post-content pre code {
+    margin: 0;
     display: inline;
     background-color: transparent;
 }

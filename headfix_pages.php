@@ -35,10 +35,10 @@
     #footer{
         padding: 20px 0;
     }
-    <?php if(isset($this->fields->contentWidth) && intval($this->fields->contentWidth >= 400)):?>
+    <?php if(hasValue($this->fields->contentWidth)):?>
     @media(min-width: 992px) {
         .container {
-            max-width: <?=intval($this->fields->contentWidth)?>px;
+            max-width: <?=is_numeric($this->fields->contentWidth)?($this->fields->contentWidth."px"):$this->fields->contentWidth?>;
         }
     }
     <?php endif?>

@@ -62,7 +62,7 @@ if(isset($this->fields->js)) {
 <footer id="footer" role="contentinfo">
     <div class="container">
         <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • All Rights Reserved.</p>
-        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a no-pjax href="http://hran.me/mirages.html?copyright&v=140">Mirages</a></p>
+        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a no-pjax href="https://hran.me/mirages.html?copyright&v=140">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
 <div id="loader-wrapper">
@@ -143,7 +143,7 @@ if(isset($this->fields->js)) {
         };
         var setupImages = function () {
             var addon = getPostImageAddon();
-            $("article img").each(function() {
+            $("article img:not(code img, pre img)").each(function() {
                 var src = $(this).attr('data-src');
                 if (src != null && src != undefined && src != "") {
                     $(this).attr('src', src + addon);
@@ -194,13 +194,13 @@ if(isset($this->fields->js)) {
             body_am(anchor);
         };
         var setupContents = function () {
-            $("article img:not(article .link-box img)").each(function() {
+            $("article img:not(article .link-box img, img[no-zoom])").each(function() {
                 $(this).attr('data-action', 'zoom');
                 if($(this).next().is('br')){
                     $(this).next().remove();
                 }
             });
-            $(".post-content a, #content a").each(function() {
+            $(".post-content a:not(code a, pre a), #content a:not(code a, pre a)").each(function() {
                 var href = $(this).attr('href');
                 if (href.startWith("http")) {
                     $(this).attr('target', "_blank");
@@ -284,7 +284,7 @@ if(isset($this->fields->js)) {
 <script>
     var fontname;
     if (window.devicePixelRatio >= 1.5) {
-        fontname = "Merriweather:300,400:latin,latin-ext";
+        fontname = "Merriweather:200,300,400:latin,latin-ext";
     } else {
         fontname = "Open Sans:300,400,700:latin,latin-ext";
     }

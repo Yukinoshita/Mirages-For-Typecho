@@ -26,7 +26,6 @@
     } else {
         $colorClass = "color-default";
     }
-    $this->ddb = $this->db;
     @$if_https = $_SERVER['HTTPS'];	//这样就不会有错误提示
     if ($if_https) {	//如果是使用 https 访问的话就添加 https
         define('IS_HTTPS', true);

@@ -5,28 +5,36 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $baseTheme = new Typecho_Widget_Helper_Form_Element_Radio('baseTheme', array('0'=>_t('Mirages'), '1'=>_t('Mirages White'),'2'=>_t('Mirages Dark')), '0', _t('主题基础色调'),_t('默认为 Mirages'));
     $form->addInput($baseTheme);
     $themeColor = new Typecho_Widget_Helper_Form_Element_Text('themeColor', NULL, NULL, _t('自定义主题主色调'), _t('默认为<span style="color: #1abc9c;">#1abc9c</span>, 你可以自定义任何你喜欢的颜色作为主题主色调。自定义主色调必须使用 Hex Color, 即`#233333`或`#333`的格式。填写错误的格式可能不会生效。'));
+    $themeColor->input->setAttribute('class', 'mini');
     $form->addInput($themeColor);
     $disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array('0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式'),_t('默认为开启'));
     $form->addInput($disableAutoNightTheme);
+
     $staticPath = new Typecho_Widget_Helper_Form_Element_Text('staticPath', NULL, NULL, _t('静态文件路径'), _t('用于 CDN 加速，以主题目录为根目录，设置后一些静态文件会替换成该路径上的文件。'));
     $form->addInput($staticPath);
     $defaultBg = new Typecho_Widget_Helper_Form_Element_Text('defaultBg', NULL, NULL, _t('站点背景大图地址'), _t('在这里填入一个图片URL地址, 以在网站显示一个背景大图。留空则不显示。'));
     $form->addInput($defaultBg);
     $defaultBgHeight = new Typecho_Widget_Helper_Form_Element_Text('defaultBgHeight', NULL, '60', _t('站点背景大图高度(%)'), _t('站点背景大图高度占屏幕总高度的百分比。'));
+    $defaultBgHeight->input->setAttribute('class', 'mini');
+    $defaultBgHeight->addRule('isFloat', '请仅输入数字');
     $form->addInput($defaultBgHeight);
     $sideMenuAvatar = new Typecho_Widget_Helper_Form_Element_Text('sideMenuAvatar', NULL, NULL, _t('侧边栏头像'), NULL);
     $form->addInput($sideMenuAvatar);
 
     $disqusShortName = new Typecho_Widget_Helper_Form_Element_Text('disqusShortName', NULL, NULL, _t('Disqus Short Name'), _t('Disqus评论'));
+    $disqusShortName->input->setAttribute('class', 'mini');
     $form->addInput($disqusShortName);
 
     $duoshuoShortName = new Typecho_Widget_Helper_Form_Element_Text('duoshuoShortName', NULL, NULL, _t('多说 Short Name'), _t('多说评论'));
+    $duoshuoShortName->input->setAttribute('class', 'mini');
     $form->addInput($duoshuoShortName);
     $duoshuoUserId = new Typecho_Widget_Helper_Form_Element_Text('duoshuoUserId', NULL, NULL, _t('多说User Id'), _t('多说 User Id, 用于显示「博主」标签, 不同于「自定义多说Author Id」'));
+    $duoshuoUserId->input->setAttribute('class', 'mini');
     $form->addInput($duoshuoUserId);
     $duoshuoCustomEmbedJs = new Typecho_Widget_Helper_Form_Element_Text('duoshuoCustomEmbedJs', NULL, NULL, _t('自定义多说Embed.js'), _t('自定义多说Embed.js的地址'));
     $form->addInput($duoshuoCustomEmbedJs);
     $duoshuoCustomAuthorId = new Typecho_Widget_Helper_Form_Element_Text('duoshuoCustomAuthorId', NULL, NULL, _t('自定义多说Author Id'), _t('自定义多说Author Id'));
+    $duoshuoCustomAuthorId->input->setAttribute('class', 'mini');
     $form->addInput($duoshuoCustomAuthorId);
 
     $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, 'http://b.bshare.cn/barCode?site=weixin&url={{%LINK}}', _t('本页二维码生成地址'), _t("使用占位符表示文章链接。留空则不显示。支持的占位符有: <br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%LINK}}</code>: 当前页链接<br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%BASE64_LINK}}</code>: Base64后的当前页链接<br><code style='background-color: rgba(0, 0, 0, 0.117);'>{{%BASE64_LINK_WITHOUT_SLASH}}</code>: Base64后的当前页链接, 使用`-`替换`/`。"));
@@ -216,23 +224,24 @@ function isPjax() {
     }
     return false;
 }
-function loadArchiveBanner($that) {
+function loadArchiveBanner($archive) {
 
-    if (count($that->stack) == 1) {
-        if (isset($that->fields->banner)) {
-            return $that->fields->banner;
+    if (count($archive->stack) == 1) {
+        if (isset($archive->fields->banner)) {
+            return $archive->fields->banner;
         } else {
             return "";
         }
     } else {
         $cids = array();
-        for($i = 0; $i < count($that->stack); $i++) {
-            $cids[] = $that->stack[$i]["cid"];
+        for($i = 0; $i < count($archive->stack); $i++) {
+            $cids[] = $archive->stack[$i]["cid"];
         }
         if (count($cids) < 1) {
             return "";
         }
-        $rows = $that->ddb->fetchAll($that->ddb->select()->from('table.fields')
+        $db = Typecho_Db::get();
+        $rows = $db->fetchAll($db->select()->from('table.fields')
             ->where('cid IN ?', $cids)
             ->where('name = ?', 'banner')
         );
@@ -250,7 +259,100 @@ function loadArchiveBanner($that) {
     }
 }
 
-function renderCards($content) {
+function content($archive, $more = false) {
+    return false !== $more && false !== strpos($archive->text, '<!--more-->') ?
+        $archive->excerpt . "<p class=\"more\"><a href=\"{$archive->permalink}\" title=\"{$archive->title}\">{$more}</a></p>" : $archive->content;
+}
+
+function render($content) {
+    $replaceStartIndex = array();
+    $replaceEndIndex = array();
+    $currentReplaceId = 0;
+    $replaceIndex = 0;
+    $searchIndex = 0;
+    $searchCloseTag = false;
+    $contentLength = strlen($content);
+    while (true) {
+        if ($searchCloseTag) {
+            $tagName = substr($content, $searchIndex, 4);
+            if ($tagName == "<cod") {
+                $searchIndex = strpos($content, '</code>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 7;
+            } elseif ($tagName == "<pre") {
+                $searchIndex = strpos($content, '</pre>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 6;
+            } elseif ($tagName == "<kbd") {
+                $searchIndex = strpos($content, '</kbd>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 6;
+            } else {
+                break;
+            }
+
+            if (!$searchIndex) {
+                break;
+            }
+            $replaceIndex = $searchIndex;
+            $searchCloseTag = false;
+            continue;
+        } else {
+            $searchCodeIndex = strpos($content, '<code', $searchIndex);
+            $searchPreIndex = strpos($content, '<pre', $searchIndex);
+            $searchKbdIndex = strpos($content, '<kbd', $searchIndex);
+            if (!$searchCodeIndex) {
+                $searchCodeIndex = $contentLength;
+            }
+            if (!$searchPreIndex) {
+                $searchPreIndex = $contentLength;
+            }
+            if (!$searchKbdIndex) {
+                $searchKbdIndex = $contentLength;
+            }
+            $searchIndex = min($searchCodeIndex, $searchPreIndex, $searchKbdIndex);
+            $searchCloseTag = true;
+        }
+        $replaceStartIndex[$currentReplaceId] = $replaceIndex;
+        $replaceEndIndex[$currentReplaceId] = $searchIndex;
+        $currentReplaceId++;
+        $replaceIndex = $searchIndex;
+    }
+
+    $output = "";
+    $output .= substr($content, 0, $replaceStartIndex[0]);
+    for ($i = 0; $i < count($replaceStartIndex); $i++) {
+        $part = substr($content, $replaceStartIndex[$i], $replaceEndIndex[$i] - $replaceStartIndex[$i]);
+        $renderedPart = _renderPart($part);
+        $output.= $renderedPart;
+        if ($i < count($replaceStartIndex) - 1) {
+            $output.= substr($content, $replaceEndIndex[$i], $replaceStartIndex[$i + 1] - $replaceEndIndex[$i]);
+        }
+    }
+    $output .= substr($content, $replaceEndIndex[count($replaceStartIndex) - 1]);
+    return $output;
+}
+
+function _renderPart($content) {
+    $content = _renderPhonetic($content);
+    $content = _renderCards($content);
+    return $content;
+}
+
+function _renderPhonetic($content) {
+    $content = preg_replace('/\{\{\s*([^\:]+?)\s*\:\s*([^}]+?)\s*\}\}/is',
+        "<ruby>$1<rp> (</rp><rt>$2</rt><rp>) </rp></ruby>", $content);
+    return $content;
+}
+
+
+function _renderCards($content) {
     $currentGroupId = 0;
     $lastFindIndex = 0;
     $lastFindLength = 0;
@@ -270,11 +372,11 @@ function renderCards($content) {
             $first = false;
             $useNewGroup = true;
             $currentFindIndex = strpos($content, $matches[0][$i]);
-            $currentFindLength = mb_strlen($matches[0][$i]);
+            $currentFindLength = strlen($matches[0][$i]);
         } else {
             $lastEndIndex = $lastFindIndex + $lastFindLength;
             $currentFindIndex = strpos($content, $matches[0][$i], $lastEndIndex - 1);
-            $currentFindLength = mb_strlen($matches[0][$i]);
+            $currentFindLength = strlen($matches[0][$i]);
             if ($currentFindIndex - $lastEndIndex >= 0) {
                 $splitContent = substr($content, $lastEndIndex, $currentFindIndex - $lastEndIndex);
                 if (strlen($splitContent) > 0 && preg_match('/\w+/xs', $splitContent)) {
