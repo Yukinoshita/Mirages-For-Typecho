@@ -102,7 +102,7 @@
             bg += addon;
             <?php endif?>
         </script>
-        <?php $showBanner = (strlen($this->banner) > 5);?>
+        <?php $showBanner = (strlen($this->banner) > 5) || $this->is('page','about') || $this->is('page','links');?>
         <?php if($showBanner):?>
         <header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom animation-on" style="
         <?php if($this->is("page","about")):?>
