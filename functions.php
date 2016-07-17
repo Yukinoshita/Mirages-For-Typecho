@@ -406,6 +406,10 @@ function _renderCards($content) {
     $totalCount = preg_match_all('/(<p>)*<a\s+href=\"([^\"]+?)\"[^<>]*>([^<>]+?)<\/a>\+\(<a\s+href=\"([^\"]+?)\">([^<>]+?)<\/a>\)(<\/p>)*(<\s*br\s*\/\s*>)*(<\s*\/\s*br\s*>)*/ixs', $content, $matches);
 
     if ($totalCount <= 0) {
+        $totalCount = preg_match_all('/(<p>)*<a\s+href=\"([^\"]+?)\"[^<>]*>([^<>]+?)<\/a>\+\(<a\s+href=\"([^\"]+?)\)\">([^<>]+?)\)<\/a>(<\/p>)*(<\s*br\s*\/\s*>)*(<\s*\/\s*br\s*>)*/ixs', $content, $matches);
+    }
+
+    if ($totalCount <= 0) {
         $totalCount = preg_match_all('/(<p>)*<a\s+href=\"([^\"]+?)\"[^<>]*>([^<>]+?)<\/a>\+\(([^<>]+?)\)(<\/p>)*(<\s*br\s*\/\s*>)*(<\s*\/\s*br\s*>)*/ixs', $content, $matches);
     }
 
@@ -422,8 +426,9 @@ function _renderCards($content) {
             if ($currentFindIndex - $lastEndIndex >= 0) {
                 $splitContent = substr($content, $lastEndIndex, $currentFindIndex - $lastEndIndex);
                 if (strlen($splitContent) > 0 && preg_match('/\w+/xs', $splitContent)) {
-                    $trimSplitContent = preg_replace('/<br\s*\/>/ixs', '', $splitContent);
-                    $trimSplitContent = preg_replace('/<\s*\/\s*br>/ixs', '', $trimSplitContent);
+                    $trimSplitContent = preg_replace('/<\s*br\s*\/\s*>/ixs', '', $splitContent);
+                    $trimSplitContent = preg_replace('/<\s*\/\s*br\s*>/ixs', '', $trimSplitContent);
+                    $trimSplitContent = preg_replace('/<\s*br\s*>/ixs', '', $trimSplitContent);
                     if (strlen($trimSplitContent) > 0 && preg_match('/\w+/xs', $trimSplitContent)) {
                         $useNewGroup = true;
                     } else {
