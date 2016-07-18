@@ -50,7 +50,7 @@
     <?php endif?>
 <?php endif?>
 <?php
-if(isset($this->fields->js)) {
+if(hasValue($this->fields->js)) {
     echo "<script type=\"text/javascript\">\n";
     echo $this->fields->js;
     echo "\n</script>\n";
@@ -302,12 +302,12 @@ if(isset($this->fields->js)) {
     })(document);
 </script>
 <?php
-if(isset($this->options->customJs)) {
+if(hasValue($this->options->customJs)) {
     echo "<script type=\"text/javascript\">\n";
     echo $this->options->customJs;
     echo "\n</script>\n";
 }
-if(isset($this->options->beforeBodyClose)) {
+if(hasValue($this->options->beforeBodyClose)) {
     echo $this->options->beforeBodyClose;
 }
 ?>

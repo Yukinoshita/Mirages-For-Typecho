@@ -86,7 +86,7 @@
                 if (windowHeight > window.screen.availHeight) {
                     windowHeight = window.screen.availHeight;
                 }
-                <?php if(isset($this->fields->bannerHeight)):?>
+                <?php if(hasValue($this->fields->bannerHeight)):?>
                 var bgHeightP = "<?=$this->fields->bannerHeight?>";
                 <?php else:?>
                 var bgHeightP = "<?=$this->options->defaultBgHeight?>";
@@ -137,8 +137,8 @@
 
                     <?php elseif($this->is('index')):?>
                     <?php else: ?>
-                        <h1 class="blog-title light" style="<?php if (isset($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="name"><?php if (isset($this->fields->mastheadTitle)) echo $this->fields->mastheadTitle ?></h1>
-                        <h2 class="blog-description light bordered bordered-top" style="<?php if (isset($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="description"><?php if (isset($this->fields->mastheadSubtitle)) echo $this->fields->mastheadSubtitle ?></h2>
+                        <h1 class="blog-title light" style="<?php if (hasValue($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="name"><?php if (hasValue($this->fields->mastheadTitle)) echo $this->fields->mastheadTitle ?></h1>
+                        <h2 class="blog-description light bordered bordered-top" style="<?php if (hasValue($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="description"><?php if (hasValue($this->fields->mastheadSubtitle)) echo $this->fields->mastheadSubtitle ?></h2>
                     <?php endif ?>
                 </div>
             </div>

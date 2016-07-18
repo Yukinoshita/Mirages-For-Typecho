@@ -52,7 +52,7 @@
 </style>
 <style type="text/css">
 <?php
-    if(isset($this->fields->css)) {
+    if(hasValue($this->fields->css)) {
         echo $this->fields->css;
     }
 ?> 

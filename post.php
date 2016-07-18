@@ -2,7 +2,7 @@
 <?php $this->need('header.php'); ?>
 <div id="post" role="main">
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <?php if(!(isset($this->fields->hideTitle) && intval($this->fields->hideTitle) > 0)): ?>
+        <?php if(!(hasValue($this->fields->hideTitle) && intval($this->fields->hideTitle) > 0)): ?>
         <h2 class="post-title" itemprop="name headline"><?php $this->title() ?></h2>
         <ul class="post-meta">
             <li itemprop="author" itemscope itemtype="http://schema.org/Person"><?php _e('作者: '); ?><a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></li>

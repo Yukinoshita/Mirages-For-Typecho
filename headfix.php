@@ -404,7 +404,7 @@
 ?>
 <style type="text/css">
 <?php
-    if(isset($this->options->customCss)) {
+    if(hasValue($this->options->customCss)) {
         echo $this->options->customCss;
     }
 ?> 

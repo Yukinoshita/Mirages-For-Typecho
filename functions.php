@@ -249,7 +249,7 @@ function isPjax() {
 function loadArchiveBanner($archive) {
 
     if (count($archive->stack) == 1) {
-        if (isset($archive->fields->banner)) {
+        if (hasValue($archive->fields->banner)) {
             return $archive->fields->banner;
         } else {
             return "";
