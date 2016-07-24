@@ -62,7 +62,7 @@ if(hasValue($this->fields->js)) {
 <footer id="footer" role="contentinfo">
     <div class="container">
         <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • All Rights Reserved.</p>
-        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a no-pjax href="https://hran.me/mirages.html?copyright&v=140">Mirages</a></p>
+        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a no-pjax href="https://hran.me/mirages.html?copyright&v=141b">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
 <div id="loader-wrapper">

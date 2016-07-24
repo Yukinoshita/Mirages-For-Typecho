@@ -4,11 +4,11 @@
  *
  * 详细的安装及升级帮助可以查看: <a href="https://github.com/Dalodd/Mirages-For-Typecho/wiki">这里</a>
  *
- * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info&v=140#comments">我的博客留言</a>
+ * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info&v=141b#comments">我的博客留言</a>
  *
  * @package Mirages
  * @author Hran
- * @version 1.4.0
+ * @version 1.4.1b
  * @link http://hran.me/?mirages
  */
 
