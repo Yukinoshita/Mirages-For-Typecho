@@ -163,7 +163,11 @@
                                         echo " • "; $this->category(',');
                                     }
                                     if($this->user->hasLogin()) {
-                                        echo " • "; echo "<a href=\"", Helper::options()->adminUrl, "write-post.php?cid={$this->cid}\" target=\"_blank\">"; _e('编辑'); echo "</a>";
+                                        if ($this->is('page')) {
+                                            echo " • "; echo "<a href=\"", Helper::options()->adminUrl, "write-page.php?cid={$this->cid}\" target=\"_blank\">"; _e('编辑'); echo "</a>";
+                                        } else {
+                                            echo " • "; echo "<a href=\"", Helper::options()->adminUrl, "write-post.php?cid={$this->cid}\" target=\"_blank\">"; _e('编辑'); echo "</a>";
+                                        }
                                     }
                                 }
                             ?>
