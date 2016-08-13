@@ -4,11 +4,11 @@
  *
  * 详细的安装及升级帮助可以查看: <a href="https://github.com/Dalodd/Mirages-For-Typecho/wiki">这里</a>
  *
- * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info&v=141b#comments">我的博客留言</a>
+ * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info&v=141b2#comments">我的博客留言</a>
  *
  * @package Mirages
  * @author Hran
- * @version 1.4.1b
+ * @version 1.4.1b2
  * @link http://hran.me/?mirages
  */
 
@@ -21,7 +21,7 @@ $this->need('header.php');
 			<div class="post" id="index-post">
                 <a href="<?php $this->permalink() ?>"><h2 class="post-title" itemprop="headline"><?php $this->title() ?></h2></a>
                 <div class="post-info">
-					<span itemprop="datePublished"><?php $this->date('F j, Y'); ?> on </span>
+					<span itemprop="datePublished"><?php $this->date($this->options->postDateFormat); ?> • </span>
 					<span itemprop="categoryPublished"><?php $this->category(','); ?></span>
 					<?php $parsed = parse_url($this->permalink);?>
 					<?php if(strlen($this->options->disqusShortName) > 0):?>
@@ -33,7 +33,7 @@ $this->need('header.php');
 					<?php endif?>
 				</div>
 				<div class="post-content" itemprop="description">
-					<p><?= render(content($this, "Continue Reading...")); ?></p>
+					<p><?= render(content($this, "阅读全文")); ?></p>
 				</div>
 			</div>
         </article>

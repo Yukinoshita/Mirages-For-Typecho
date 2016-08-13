@@ -41,11 +41,17 @@ foreach ($addOnHighlightLang as $url) {
     var BASE_SCRIPT_URL = "<?= STATIC_PATH ?>";
     var width = window.screen.availWidth;
     var height = window.screen.availHeight;
-    var injectStyle = function (css) {
+    var CSS = function (css) {
         var link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
         link.href = css;
         document.head.appendChild(link);
+    };
+    var JS = function (js, async) {
+        async = async || false;
+        var sc = document.createElement('script'), s = document.scripts[0];
+        sc.src = js; sc.async = async;
+        s.parentNode.insertBefore(sc, s);
     };
     var getImageAddon = function (width, height) {
         var addon = "?";

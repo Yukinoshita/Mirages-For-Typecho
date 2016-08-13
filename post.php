@@ -2,11 +2,11 @@
 <?php $this->need('header.php'); ?>
 <div id="post" role="main">
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <?php if(!(hasValue($this->fields->hideTitle) && intval($this->fields->hideTitle) > 0)): ?>
+        <?php if(!(hasValue($this->fields->headTitle) && intval($this->fields->headTitle) > 0)): ?>
         <h2 class="post-title" itemprop="name headline"><?php $this->title() ?></h2>
         <ul class="post-meta">
             <li itemprop="author" itemscope itemtype="http://schema.org/Person"><?php _e('作者: '); ?><a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></li>
-            <li><?php _e('时间: '); ?><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date('F j, Y'); ?></time></li>
+            <li><?php _e('时间: '); ?><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date($this->options->postDateFormat); ?></time></li>
             <?php if(intval($this->viewsNum) > 0): ?>
             <li><?php _e('阅读: '); ?><?php $this->viewsNum();?></li>
             <?php endif?>
@@ -21,7 +21,7 @@
         </div>
 		<div class="tags">
 			<div class="dkeywords">
-			   <div itemprop="keywords" class="keywords"><?php _e('标签: '); ?><?php $this->tags(', ', true, 'none'); ?></div>
+			   <div itemprop="keywords" class="keywords"><?php _e('标签: '); ?><?php $this->tags(', ', true, '无'); ?></div>
 			</div>
 		</div>
         <?php if(!isPhone() && (hasValue($this->options->postQRCodeURL) || hasValue($this->options->rewardQRCodeURL))): ?>

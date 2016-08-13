@@ -62,6 +62,7 @@ $hexColor = $this->options->themeColor;
     body.color-custom #comments .page-navigator .current a {
         background: <?=$hexColor?>;
         border-color: <?=$hexColor?>;
+        color: #fff;
     }
     body.color-custom #disqus_thread a {
         color: <?=$hexColor?>;
@@ -147,6 +148,7 @@ $hexColor = $this->options->themeColor;
     body.color-custom #ds-thread #ds-reset .ds-paginator a:hover, body.color-custom #ds-thread #ds-reset .ds-paginator a.ds-current {
         border-color: <?=$hexColor?>;
         background-color: <?=$hexColor?>;
+        color: #fff;
     }
     body.color-custom #ds-thread #ds-reset a.ds-unread-comments-count {
         background-color: <?=$hexColor?>;

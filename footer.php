@@ -61,8 +61,7 @@ if(hasValue($this->fields->js)) {
 </div><!-- end #wrap -->
 <footer id="footer" role="contentinfo">
     <div class="container">
-        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • All Rights Reserved.</p>
-        <p><?php _e('Powered By <a href="http://www.typecho.org">Typecho</a>'); ?> • Theme <a no-pjax href="https://hran.me/mirages.html?copyright&v=141b">Mirages</a></p>
+        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • Theme <a href="https://hran.me/mirages.html?copyright&v=141b2" target="_blank">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
 <div id="loader-wrapper">
@@ -238,7 +237,6 @@ if(hasValue($this->fields->js)) {
                     _czc.push(['_trackEvent', '按钮', '点击', '打赏']);
                 }
                 body.removeClass('show-post-qr-box').toggleClass('show-reward-qr-box');
-
             });
         };
         setupContents();
@@ -252,10 +250,10 @@ if(hasValue($this->fields->js)) {
         ).on('pjax:click', function() {
             $('body').attr('data-prev-href', document.location.pathname + document.location.search + document.location.hash);
         }).on('pjax:send', function() {
-            $('#loader-wrapper').show();
+            $('#loader-wrapper').addClass("in");
             resetStatus();
         }).on('pjax:complete', function() {
-            $('#loader-wrapper').hide();
+            $('#loader-wrapper').removeClass("in");
             var refer = $('body').attr('data-prev-href');
             var currentHref = document.location.pathname + document.location.search + document.location.hash;
             _czc.push(﻿['_trackPageview', currentHref, refer]);

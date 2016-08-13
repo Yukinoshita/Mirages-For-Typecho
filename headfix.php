@@ -172,7 +172,7 @@
     }
     #index .more>a:hover,#archive .more>a:hover {
         color: #FFF !important;
-        border: 1px solid #1abc9c;
+        border: 1px dashed #1abc9c;
         background-color: rgba(24,188,156,0.5);
         width: 250px;
     }

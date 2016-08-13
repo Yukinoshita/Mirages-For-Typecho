@@ -3,6 +3,7 @@
     define("THEME_MIRAGES", 0);
     define("THEME_MIRAGES_WHITE", 1);
     define("THEME_MIRAGES_DARK", 2);
+    define("LANG_CHN", (!empty($this->options->otherOptions) && in_array('useChineseInSideMenu', $this->options->otherOptions)));
     if (strlen($this->options->staticPath) > 0){
         define("STATIC_PATH", rtrim($this->options->staticPath,'/').'/');
     } else {
@@ -117,7 +118,7 @@
                 head.style.height = bgHeight+"px";
             </script>
             <div class="inner">
-                <div class="container">
+                <div class="">
                     <?php if($this->is('page','about')):?>
                         <div id="about-avatar">
                             <img class="rotate" src="<?php $this->options->sideMenuAvatar(); ?>" alt="Avatar" width="200" height="200"/>
@@ -136,10 +137,38 @@
                         </h1>
 
                     <?php elseif($this->is('index')):?>
-                    <?php else: ?>
-                        <h1 class="blog-title light" style="<?php if (hasValue($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="name"><?php if (hasValue($this->fields->mastheadTitle)) echo $this->fields->mastheadTitle ?></h1>
-                        <h2 class="blog-description light bordered bordered-top" style="<?php if (hasValue($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="description"><?php if (hasValue($this->fields->mastheadSubtitle)) echo $this->fields->mastheadSubtitle ?></h2>
-                    <?php endif ?>
+                    <?php else:?>
+                        <h1 class="blog-title" style="<?php if (hasValue($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="name">
+                            <?php
+                                if (hasValue($this->fields->mastheadTitle)) {
+                                    echo $this->fields->mastheadTitle;
+                                } elseif (hasValue($this->fields->headTitle) && intval($this->fields->headTitle) > 0) {
+                                    echo $this->title;
+                                }
+                            ?>
+                        </h1>
+                        <h2 class="blog-description light bordered bordered-top" style="<?php if (hasValue($this->fields->mastheadTitleColor)) echo "color: ".$this->fields->mastheadTitleColor.";" ?>" itemprop="description">
+                            <?php
+                                if (hasValue($this->fields->mastheadSubtitle)) {
+                                    echo $this->fields->mastheadSubtitle;
+                                } elseif (hasValue($this->fields->headTitle) && intval($this->fields->headTitle) > 0) {
+//                                    echo "<a itemprop=\"name\" href=\""; $this->author->permalink(); echo "\" rel=\"author\">"; $this->author(); echo "</a>";
+                                    $this->author();
+                                    echo " • ";
+                                    $this->date($this->options->postDateFormat);
+                                    if(intval($this->viewsNum) > 0) {
+                                        echo " • 阅读: {$this->viewsNum}";
+                                    }
+                                    if (!$this->is("page")) {
+                                        echo " • "; $this->category(',');
+                                    }
+                                    if($this->user->hasLogin()) {
+                                        echo " • "; echo "<a href=\"", Helper::options()->adminUrl, "write-post.php?cid={$this->cid}\" target=\"_blank\">"; _e('编辑'); echo "</a>";
+                                    }
+                                }
+                            ?>
+                        </h2>
+                    <?php endif?>
                 </div>
             </div>
         </header>
