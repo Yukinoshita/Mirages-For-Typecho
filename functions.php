@@ -316,6 +316,18 @@ function render($content) {
                     break;
                 }
                 $searchIndex += 6;
+            } elseif ($tagName == "<scr") {
+                $searchIndex = strpos($content, '</script>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 9;
+            } elseif ($tagName == "<sty") {
+                $searchIndex = strpos($content, '</style>', $searchIndex);
+                if (!$searchIndex) {
+                    break;
+                }
+                $searchIndex += 8;
             } else {
                 break;
             }
@@ -330,6 +342,8 @@ function render($content) {
             $searchCodeIndex = strpos($content, '<code', $searchIndex);
             $searchPreIndex = strpos($content, '<pre', $searchIndex);
             $searchKbdIndex = strpos($content, '<kbd', $searchIndex);
+            $searchScriptIndex = strpos($content, '<script', $searchIndex);
+            $searchStyleIndex = strpos($content, '<style', $searchIndex);
             if (!$searchCodeIndex) {
                 $searchCodeIndex = $contentLength;
             }
@@ -339,7 +353,13 @@ function render($content) {
             if (!$searchKbdIndex) {
                 $searchKbdIndex = $contentLength;
             }
-            $searchIndex = min($searchCodeIndex, $searchPreIndex, $searchKbdIndex);
+            if (!$searchScriptIndex) {
+                $searchScriptIndex = $contentLength;
+            }
+            if (!$searchStyleIndex) {
+                $searchStyleIndex = $contentLength;
+            }
+            $searchIndex = min($searchCodeIndex, $searchPreIndex, $searchKbdIndex, $searchScriptIndex, $searchStyleIndex);
             $searchCloseTag = true;
         }
         $replaceStartIndex[$currentReplaceId] = $replaceIndex;
@@ -494,4 +514,36 @@ function _renderCards($content) {
 
     $output .= substr($content, $linkGroupEndIndex[$currentGroupId]);
     return $output;
+}
+function initTheme($archive) {
+    $options = Typecho_Widget::widget('Widget_Options');
+    define("THEME_MIRAGES", 0);
+    define("THEME_MIRAGES_WHITE", 1);
+    define("THEME_MIRAGES_DARK", 2);
+    define("LANG_CHN", (!empty($options->otherOptions) && in_array('useChineseInSideMenu', $options->otherOptions)));
+    if (strlen($options->staticPath) > 0){
+        define("STATIC_PATH", rtrim($options->staticPath,'/').'/');
+    } else {
+        define("STATIC_PATH", $options->rootUrl."/usr/themes/Mirages/");
+    }
+    if ((!empty($options->otherOptions) && in_array('enablePjax', $options->otherOptions))) {
+        define("PJAX_ENABLED", true);
+    } else {
+        define("PJAX_ENABLED", false);
+    }
+    if ($options->baseTheme == THEME_MIRAGES) {
+        define("THEME_CLASS", "");
+    } elseif ($options->baseTheme == THEME_MIRAGES_WHITE) {
+        define("THEME_CLASS", "theme-white");
+    } elseif ($options->baseTheme == THEME_MIRAGES_DARK) {
+        define("THEME_CLASS", "theme-dark");
+    }
+    @$if_https = $_SERVER['HTTPS'];	//这样就不会有错误提示
+    if ($if_https) {	//如果是使用 https 访问的话就添加 https
+        define('IS_HTTPS', true);
+    } else {
+        define('IS_HTTPS', false);
+    }
+    $db = Typecho_Db::get();
+    $archive->userNum = $db->fetchObject($db->select(array('COUNT(uid)' => 'num'))->from('table.users'))->num;
 }

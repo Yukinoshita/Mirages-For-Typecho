@@ -4,18 +4,15 @@
 <?php if(isELCapitanOrAbove()): ?>
     /*Mac OS X - El Capitan*/
     body {
-        font-family: 'Open Sans', 'PingFang SC', sans-serif;
         font-weight: 400;
     }
     #index .post .post-title,#archive .post .post-title{
         font-weight: 400;
     }
     #post .post-title {
-        font-family: 'Open Sans', 'PingFang SC', sans-serif;
         font-weight: 300;
     }
     #nav .menu li a {
-        font-family: 'Open Sans', 'PingFang SC', sans-serif;
         font-weight: 400;
     }
     .post-content h1 {
@@ -26,22 +23,18 @@
     }
     @media screen and (min-device-pixel-ratio: 1.5){
         body {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         #post .post-title {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         #index .post .post-title,#archive .post .post-title{
             font-weight: 300;
         }
         #nav .menu li a {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         .github-box, .github-box .github-box-title h3 {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif !important;
         }
         .post-content h1 {
             font-weight: 300;
@@ -52,22 +45,18 @@
     }
     @media screen and (-webkit-min-device-pixel-ratio: 1.5){
         body {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         #post .post-title {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         #index .post .post-title,#archive .post .post-title{
             font-weight: 300;
         }
         #nav .menu li a {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         .github-box, .github-box .github-box-title h3 {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif !important;
         }
         .post-content h1 {
             font-weight: 300;
@@ -78,22 +67,18 @@
     }
     @media screen and (-o-min-device-pixel-ratio: 1.5/1.5){
         body {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         #post .post-title {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         #index .post .post-title,#archive .post .post-title{
             font-weight: 300;
         }
         #nav .menu li a {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 300;
         }
         .github-box, .github-box .github-box-title h3 {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif !important;
         }
         .post-content h1 {
             font-weight: 300;
@@ -104,22 +89,18 @@
     }
     @media screen and (min--moz-device-pixel-ratio: 1.5){
         body {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 400;
         }
         #post .post-title {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 400;
         }
         #index .post .post-title,#archive .post .post-title{
             font-weight: 400;
         }
         #nav .menu li a {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif;
             font-weight: 400;
         }
         .github-box, .github-box .github-box-title h3 {
-            font-family: 'Merriweather', 'PingFang SC', sans-serif !important;
         }
         .post-content h1 {
             font-weight: 400;
@@ -223,6 +204,9 @@
 
 <?php if(isSafari()):?>
     /*Safari*/
+    a#toggle-nav {
+        padding-bottom: 0;
+    }
 <?php else:?>
     /*Not Safari*/
     /*
@@ -292,9 +276,6 @@
         letter-spacing: 0;
     }
     @media screen and (min-width: 1600px){
-        .post-content p {
-            /*font-size: 1.13em;*/
-        }
         #index .more>a, #archive .more>a {
             width: 220px;
         }
@@ -313,62 +294,6 @@
 <?php endif?>
 <?php if(isWindowsAboveVista()): ?>
     /*Windows Vista +*/
-    body {
-        font-family: 'Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-    }
-    #post .post-title {
-        font-family: 'Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-    }
-    #nav .menu li a {
-        font-family: 'Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-    }
-    @media screen and (min-device-pixel-ratio: 1.5){
-        body {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #post .post-title {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #nav .menu li a {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-    }
-    @media screen and (-webkit-min-device-pixel-ratio: 1.5){
-        body {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #post .post-title {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #nav .menu li a {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-    }
-    @media screen and (-o-min-device-pixel-ratio: 1.5/1.5){
-        body {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #post .post-title {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #nav .menu li a {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-    }
-    @media screen and (min--moz-device-pixel-ratio: 1.5){
-        body {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #post .post-title {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-        #nav .menu li a {
-            font-family: 'Merriweather','Microsoft Yahei','Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-        }
-    }
-    /*.post-content p {*/
-        /*letter-spacing: 1px;*/
-    /*}*/
     #index .more>a, #archive .more>a {
         letter-spacing: 0;
     }

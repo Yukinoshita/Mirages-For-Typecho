@@ -20,7 +20,7 @@ body {
     background-color: #FFF;
     color: #777;
     font-size: 87.5%;
-    font-family: 'Open Sans', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei', Helvetica, arial, sans-serif;
+    font-family: 'Myriad Pro', 'Merriweather', 'Open Sans', "PingFang SC", 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
 }
 a {
@@ -420,7 +420,6 @@ img[src*="Smilies"] {
 /*Post Title*/
 #post .post-title {
     margin-bottom: 15px;
-    font-family: 'Open Sans', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei', Helvetica, arial, sans-serif;
     font-weight: 300;
     font-size: 2.857em;
 }
@@ -695,7 +694,7 @@ img.paopao, #ds-thread #ds-reset .ds-comment-body img.paopao {
     background-image: linear-gradient(#fefefe,#e7e7e7);
     background-repeat: repeat-x;
     color: #333;
-    font: 13px Consolas, Menlo, Monaco, "lucida console", "Liberation Mono", "Courier New", "andale mono", monospaceX;
+    font-size: 13px;
     line-height: 10px
 }
 .post-content pre {
@@ -1006,6 +1005,7 @@ a#toggle-nav{
     margin-left: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.117);
     -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.117);
+    font-family: sans-serif !important;
 }
 @media screen and (max-width: 888px){
     a#toggle-nav{
@@ -1106,7 +1106,6 @@ a#toggle-nav.hide{
     -moz-transition: color 0.2s linear;
     transition: color 0.2s linear;
     text-align: center;
-    font-family: 'Open Sans', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
     font-weight: 300;
 }
 #nav .menu li a:hover{
@@ -1893,7 +1892,7 @@ body.show-post-qr-box #body-bottom, body.show-reward-qr-box #body-bottom {
     font-weight: normal !important;
 }
 .github-box, .github-box .github-box-title h3 {
-    font-family: 'Open Sans', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
+    font-family: 'Myriad Pro', 'Merriweather', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif;
 }
 .github-box .github-box-title h3 .repo{
     font-weight: normal !important;
@@ -1912,6 +1911,12 @@ body.show-post-qr-box #body-bottom, body.show-reward-qr-box #body-bottom {
 
 a[href^="http://www.cnzz.com"] {
     display: none;
+}
+
+.aplayer {
+    background: #fff;
+    color: #333;
+    font-family: 'Myriad Pro', 'Myriad Set Pro', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Helvetica, arial, sans-serif !important;
 }
 
 /*打印机样式*/
@@ -1958,21 +1963,13 @@ a[href^="http://www.cnzz.com"] {
 /*高分屏字体修正*/
 @media screen and (min-device-pixel-ratio:  1.5){
     body{
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         font-weight: 300;
     }
     code{
         -webkit-font-smoothing: antialiased !important;
     }
     #post .post-title {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         -webkit-font-smoothing: antialiased !important;
-    }
-    #nav .menu li a {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
-    }
-    .github-box, .github-box .github-box-title h3 {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif !important;
     }
     .post-content pre>code {
         font-size: .925em;
@@ -1991,21 +1988,13 @@ a[href^="http://www.cnzz.com"] {
 }
 @media screen and (-webkit-min-device-pixel-ratio: 1.5){
     body{
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         font-weight: 300;
     }
     code{
         -webkit-font-smoothing: antialiased !important;
     }
     #post .post-title {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         -webkit-font-smoothing: antialiased !important;
-    }
-    #nav .menu li a {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
-    }
-    .github-box, .github-box .github-box-title h3 {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif !important;
     }
     .post-content pre>code {
         font-size: .925em;
@@ -2023,21 +2012,13 @@ a[href^="http://www.cnzz.com"] {
 }
 @media screen and (-o-min-device-pixel-ratio: 1.5/1.5){
     body{
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         font-weight: 300;
     }
     code{
         -webkit-font-smoothing: antialiased !important;
     }
     #post .post-title {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         -webkit-font-smoothing: antialiased !important;
-    }
-    #nav .menu li a {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
-    }
-    .github-box, .github-box .github-box-title h3 {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif !important;
     }
     .post-content pre>code {
         font-size: .925em;
@@ -2055,21 +2036,13 @@ a[href^="http://www.cnzz.com"] {
 }
 @media screen and (min--moz-device-pixel-ratio: 1.5){
     body{
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         font-weight: 300;
     }
     code{
         -webkit-font-smoothing: antialiased !important;
     }
     #post .post-title {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
         -webkit-font-smoothing: antialiased !important;
-    }
-    #nav .menu li a {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif;
-    }
-    .github-box, .github-box .github-box-title h3 {
-        font-family: 'Merriweather', "Helvetica Neue", 'Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei', Helvetica, arial, sans-serif !important;
     }
     .post-content pre>code {
         font-size: .925em;

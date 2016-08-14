@@ -5,10 +5,9 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:100,300,400,600&subset=latin,latin-ext">
     <style>
         body{
-            font-family: 'Open Sans', 'PingFang SC', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft YaHei', Helvetica, arial, sans-serif !important;
+            font-family: 'Myriad Pro', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Helvetica, arial, sans-serif !important;
             font-weight: 200;
         }
         #wrap{

@@ -1,37 +1,10 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php
-    define("THEME_MIRAGES", 0);
-    define("THEME_MIRAGES_WHITE", 1);
-    define("THEME_MIRAGES_DARK", 2);
-    define("LANG_CHN", (!empty($this->options->otherOptions) && in_array('useChineseInSideMenu', $this->options->otherOptions)));
-    if (strlen($this->options->staticPath) > 0){
-        define("STATIC_PATH", rtrim($this->options->staticPath,'/').'/');
-    } else {
-        define("STATIC_PATH", $this->options->rootUrl."/usr/themes/Mirages/");
-    }
-    if ((!empty($this->options->otherOptions) && in_array('enablePjax', $this->options->otherOptions))) {
-        define("PJAX_ENABLED", true);
-    } else {
-        define("PJAX_ENABLED", false);
-    }
-
-    if ($this->options->baseTheme == THEME_MIRAGES) {
-        define("THEME_CLASS", "");
-    } elseif ($this->options->baseTheme == THEME_MIRAGES_WHITE) {
-        define("THEME_CLASS", "theme-white");
-    } elseif ($this->options->baseTheme == THEME_MIRAGES_DARK) {
-        define("THEME_CLASS", "theme-dark");
-    }
+    initTheme($this);
     if(isHexColor($this->options->themeColor)) {
         $colorClass = "color-custom";
     } else {
         $colorClass = "color-default";
-    }
-    @$if_https = $_SERVER['HTTPS'];	//这样就不会有错误提示
-    if ($if_https) {	//如果是使用 https 访问的话就添加 https
-        define('IS_HTTPS', true);
-    } else {
-        define('IS_HTTPS', false);
     }
 ?>
 <?php if(!isPjax() || !PJAX_ENABLED):?>
@@ -152,9 +125,11 @@
                                 if (hasValue($this->fields->mastheadSubtitle)) {
                                     echo $this->fields->mastheadSubtitle;
                                 } elseif (hasValue($this->fields->headTitle) && intval($this->fields->headTitle) > 0) {
-//                                    echo "<a itemprop=\"name\" href=\""; $this->author->permalink(); echo "\" rel=\"author\">"; $this->author(); echo "</a>";
-                                    $this->author();
-                                    echo " • ";
+                                    if ($this->userNum > 1) {
+                                        echo "<a itemprop=\"name\" href=\""; $this->author->permalink(); echo "\" rel=\"author\">"; $this->author(); echo "</a>";
+//                                        $this->author();
+                                        echo " • ";
+                                    }
                                     $this->date($this->options->postDateFormat);
                                     if(intval($this->viewsNum) > 0) {
                                         echo " • 阅读: {$this->viewsNum}";
