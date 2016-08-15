@@ -249,9 +249,11 @@ if(hasValue($this->fields->js)) {
             }
         ).on('pjax:click', function() {
             $('body').attr('data-prev-href', document.location.pathname + document.location.search + document.location.hash);
+            <?= $this->options->pjaxClickAction?>
         }).on('pjax:send', function() {
             $('#loader-wrapper').addClass("in");
             resetStatus();
+            <?= $this->options->pjaxSendAction?>
         }).on('pjax:complete', function() {
             $('#loader-wrapper').removeClass("in");
             var refer = $('body').attr('data-prev-href');
@@ -272,6 +274,7 @@ if(hasValue($this->fields->js)) {
             <?php if((!empty($this->options->texOptions) && in_array('showJax', $this->options->texOptions))):?>
             MathJax.Hub.Queue(["Typeset",MathJax.Hub,"body"]);
             <?php endif?>
+            <?= $this->options->pjaxCompleteAction?>
         });
         <?php endif?>
         $(document).ready(function () {

@@ -92,7 +92,7 @@
 <?php if(isPhone()):?>
     /*Phone*/
     .post-content {
-        font-weight: 400;
+        /*font-weight: 400;*/
         font-size: 18px;
     }
     .post-content pre {
@@ -105,7 +105,7 @@
 <?php if(deviceIs("iPad")):?>
     /*iPad*/
     .post-content {
-        font-weight: 400;
+        /*font-weight: 400;*/
         font-size: 18px;
     }
     .post-content pre {

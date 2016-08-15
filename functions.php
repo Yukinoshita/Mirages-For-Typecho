@@ -93,6 +93,13 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
         ),
         array(), _t('其他选项'));
     $form->addInput($otherOptionsBlock->multiMode());
+
+    $pjaxClickAction = new Typecho_Widget_Helper_Form_Element_Textarea('pjaxClickAction', NULL, NULL, _t('PJAX:CLICK Action'), _t('启用 PJAX 选项后, 你的第三方插件可能会在 PJAX 中失效。在这种情况下, 你可能需要重新注册事件或做其他处理。<br>在这里写入你需要进行处理的 JS 代码。并确保正确,否则可能会导致后续 JS 代码无法执行。<br>这些 JS 代码会在点击「启用了 PJAX 的链接」(PJAX 触发事件 pjax:click)的时候执行。'));
+    $form->addInput($pjaxClickAction);
+    $pjaxSendAction = new Typecho_Widget_Helper_Form_Element_Textarea('pjaxSendAction', NULL, NULL, _t('PJAX:SEND Action'), _t('启用 PJAX 选项后, 你的第三方插件可能会在 PJAX 中失效。在这种情况下, 你可能需要重新注册事件或做其他处理。<br>在这里写入你需要进行处理的 JS 代码。并确保正确,否则可能会导致后续 JS 代码无法执行。<br>这些 JS 代码会在 PJAX 发送网络请求(PJAX 触发事件 pjax:send)的时候执行。'));
+    $form->addInput($pjaxSendAction);
+    $pjaxCompleteAction = new Typecho_Widget_Helper_Form_Element_Textarea('pjaxCompleteAction', NULL, NULL, _t('PJAX:COMPLETE Action'), _t('启用 PJAX 选项后, 你的第三方插件可能会在 PJAX 中失效。在这种情况下, 你可能需要重新注册事件或做其他处理。<br>在这里写入你需要进行处理的 JS 代码。并确保正确,否则可能会导致后续 JS 代码无法执行。<br>这些 JS 代码会在 PJAX 完成页面加载并替换(PJAX 触发事件 pjax:complete)的时候执行。<br>绝大多数的处理可能应该在这里执行。你需要根据实际情况判断。'));
+    $form->addInput($pjaxCompleteAction);
 }
 
 function hasValue($field) {
