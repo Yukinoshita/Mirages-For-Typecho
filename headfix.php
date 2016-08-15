@@ -3,109 +3,33 @@
     /*根据操作系统及浏览器优化font-family*/
 <?php if(isELCapitanOrAbove()): ?>
     /*Mac OS X - El Capitan*/
-    body {
+    body, #index .post .post-title,#archive .post .post-title, #nav .menu li a {
         font-weight: 400;
     }
-    #index .post .post-title,#archive .post .post-title{
-        font-weight: 400;
-    }
-    #post .post-title {
-        font-weight: 300;
-    }
-    #nav .menu li a {
-        font-weight: 400;
-    }
-    .post-content h1 {
-        font-weight: 300;
-    }
-    .post-content h2 {
+    #post .post-title, .post-content h1, .post-content h2 {
         font-weight: 300;
     }
     @media screen and (min-device-pixel-ratio: 1.5){
-        body {
-            font-weight: 300;
-        }
-        #post .post-title {
-            font-weight: 300;
-        }
-        #index .post .post-title,#archive .post .post-title{
-            font-weight: 300;
-        }
-        #nav .menu li a {
-            font-weight: 300;
-        }
-        .github-box, .github-box .github-box-title h3 {
-        }
-        .post-content h1 {
-            font-weight: 300;
-        }
-        .post-content h2 {
+        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
+        .post-content h1, .post-content h2 {
             font-weight: 300;
         }
     }
     @media screen and (-webkit-min-device-pixel-ratio: 1.5){
-        body {
-            font-weight: 300;
-        }
-        #post .post-title {
-            font-weight: 300;
-        }
-        #index .post .post-title,#archive .post .post-title{
-            font-weight: 300;
-        }
-        #nav .menu li a {
-            font-weight: 300;
-        }
-        .github-box, .github-box .github-box-title h3 {
-        }
-        .post-content h1 {
-            font-weight: 300;
-        }
-        .post-content h2 {
+        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
+        .post-content h1, .post-content h2 {
             font-weight: 300;
         }
     }
     @media screen and (-o-min-device-pixel-ratio: 1.5/1.5){
-        body {
-            font-weight: 300;
-        }
-        #post .post-title {
-            font-weight: 300;
-        }
-        #index .post .post-title,#archive .post .post-title{
-            font-weight: 300;
-        }
-        #nav .menu li a {
-            font-weight: 300;
-        }
-        .github-box, .github-box .github-box-title h3 {
-        }
-        .post-content h1 {
-            font-weight: 300;
-        }
-        .post-content h2 {
+        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
+        .post-content h1, .post-content h2 {
             font-weight: 300;
         }
     }
     @media screen and (min--moz-device-pixel-ratio: 1.5){
-        body {
-            font-weight: 400;
-        }
-        #post .post-title {
-            font-weight: 400;
-        }
-        #index .post .post-title,#archive .post .post-title{
-            font-weight: 400;
-        }
-        #nav .menu li a {
-            font-weight: 400;
-        }
-        .github-box, .github-box .github-box-title h3 {
-        }
-        .post-content h1 {
-            font-weight: 400;
-        }
-        .post-content h2 {
+        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
+        .post-content h1, .post-content h2 {
             font-weight: 400;
         }
     }
@@ -315,7 +239,7 @@
         color: #fff;
         background: rgba(255, 255, 255, .35);
         border-radius: 4px;
-        padding: 0 3px;
+        padding: 1px 3px;
     }
     body.theme-white #ds-thread #ds-reset a.ds-user-name[data-user-id='<?=$this->options->duoshuoUserId?>']:after {
         background: rgba(0, 0, 0, .35);

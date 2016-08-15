@@ -859,7 +859,6 @@ div#body-bottom>.container{
     vertical-align: top;
     position: relative;
     z-index: 10;
-    background-color: rgba(0,0,0,0.17);
 }
 .blog-title {
     font-size: 4em;
@@ -1892,7 +1891,7 @@ body.show-post-qr-box #body-bottom, body.show-reward-qr-box #body-bottom {
     font-weight: normal !important;
 }
 .github-box, .github-box .github-box-title h3 {
-    font-family: 'Myriad Pro', 'Merriweather', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif;
+    font-family: 'Myriad Pro', 'Merriweather', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif !important;
 }
 .github-box .github-box-title h3 .repo{
     font-weight: normal !important;
@@ -1965,10 +1964,7 @@ a[href^="http://www.cnzz.com"] {
     body{
         font-weight: 300;
     }
-    code{
-        -webkit-font-smoothing: antialiased !important;
-    }
-    #post .post-title {
+    code, #post .post-title{
         -webkit-font-smoothing: antialiased !important;
     }
     .post-content pre>code {
@@ -1990,10 +1986,7 @@ a[href^="http://www.cnzz.com"] {
     body{
         font-weight: 300;
     }
-    code{
-        -webkit-font-smoothing: antialiased !important;
-    }
-    #post .post-title {
+    code, #post .post-title{
         -webkit-font-smoothing: antialiased !important;
     }
     .post-content pre>code {
@@ -2014,10 +2007,7 @@ a[href^="http://www.cnzz.com"] {
     body{
         font-weight: 300;
     }
-    code{
-        -webkit-font-smoothing: antialiased !important;
-    }
-    #post .post-title {
+    code, #post .post-title{
         -webkit-font-smoothing: antialiased !important;
     }
     .post-content pre>code {
@@ -2038,10 +2028,7 @@ a[href^="http://www.cnzz.com"] {
     body{
         font-weight: 300;
     }
-    code{
-        -webkit-font-smoothing: antialiased !important;
-    }
-    #post .post-title {
+    code, #post .post-title{
         -webkit-font-smoothing: antialiased !important;
     }
     .post-content pre>code {

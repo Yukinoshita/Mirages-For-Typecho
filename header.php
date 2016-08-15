@@ -115,7 +115,7 @@
                             <?php
                                 if (hasValue($this->fields->mastheadTitle)) {
                                     echo $this->fields->mastheadTitle;
-                                } elseif (hasValue($this->fields->headTitle) && intval($this->fields->headTitle) > 0) {
+                                } elseif (isTrue($this->fields->headTitle)) {
                                     echo $this->title;
                                 }
                             ?>
@@ -124,7 +124,7 @@
                             <?php
                                 if (hasValue($this->fields->mastheadSubtitle)) {
                                     echo $this->fields->mastheadSubtitle;
-                                } elseif (hasValue($this->fields->headTitle) && intval($this->fields->headTitle) > 0) {
+                                } elseif (isTrue($this->fields->headTitle)) {
                                     if ($this->userNum > 1) {
                                         echo "<a itemprop=\"name\" href=\""; $this->author->permalink(); echo "\" rel=\"author\">"; $this->author(); echo "</a>";
 //                                        $this->author();
