@@ -1004,7 +1004,7 @@ a#toggle-nav{
     margin-left: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.117);
     -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.117);
-    font-family: sans-serif !important;
+    font-family: -apple-system;
 }
 @media screen and (max-width: 888px){
     a#toggle-nav{
@@ -1651,10 +1651,10 @@ body.show-post-qr-box #body-bottom, body.show-reward-qr-box #body-bottom {
     height: 100%;
     z-index: -1000;
     background-color: #fff;
-    -webkit-transition: .5s ease all;
-    -moz-transition: .5s ease all;
-    -o-transition: .5s ease all;
-    transition: .5s ease all
+    -webkit-transition: .2s ease all;
+    -moz-transition: .2s ease all;
+    -o-transition: .2s ease all;
+    transition: .2s ease all
 }
 #loader-wrapper.in {
     opacity: 1;
@@ -1916,6 +1916,9 @@ a[href^="http://www.cnzz.com"] {
     background: #fff;
     color: #333;
     font-family: 'Myriad Pro', 'Myriad Set Pro', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Helvetica, arial, sans-serif !important;
+}
+.aplayer .aplayer-list {
+    -webkit-overflow-scrolling: touch;
 }
 
 /*打印机样式*/

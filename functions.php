@@ -37,7 +37,7 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $duoshuoCustomAuthorId->input->setAttribute('class', 'mini');
     $form->addInput($duoshuoCustomAuthorId);
 
-    $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, 'http://b.bshare.cn/barCode?site=weixin&url={{%LINK}}', _t('本页二维码生成地址'), _t("使用占位符表示文章链接。留空则不显示。支持的占位符有: <br>"
+    $postQRCodeURL = new Typecho_Widget_Helper_Form_Element_Text('postQRCodeURL', NULL, '//pan.baidu.com/share/qrcode?w=250&h=250&url={{%LINK}}', _t('本页二维码生成地址'), _t("使用占位符表示文章链接。留空则不显示。支持的占位符有: <br>"
         ."<code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{%LINK}}</code>: 当前页链接<br>"
         ."<code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{%BASE64_LINK}}</code>: Base64后的当前页链接<br>"
         ."<code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>{{%BASE64_LINK_WITHOUT_SLASH}}</code>: Base64后的当前页链接, 使用`-`替换`/`。"));

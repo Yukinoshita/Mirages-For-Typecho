@@ -128,9 +128,9 @@
 
 <?php if(isSafari()):?>
     /*Safari*/
-    a#toggle-nav {
-        padding-bottom: 0;
-    }
+    /*a#toggle-nav {*/
+        /*padding-bottom: 0;*/
+    /*}*/
 <?php else:?>
     /*Not Safari*/
     /*
