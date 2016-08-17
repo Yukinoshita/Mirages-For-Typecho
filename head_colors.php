@@ -82,6 +82,10 @@ $hexColor = $this->options->themeColor;
         background-color: <?=$hexColor?>;
         border-color: <?=$hexColor?>;
     }
+    body.color-custom form.protected input[type="submit"].submit:hover {
+        border-color: <?=$hexColor?>;
+        background-color: <?=hex2RGBColor($hexColor, 0.5)?>;
+    }
     body.color-custom .github-box .github-box-download .download:hover{
         border-color: <?=$hexColor?> !important;
         background-color: <?=hex2RGBColor($hexColor, 0.4)?> !important;

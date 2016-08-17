@@ -61,7 +61,7 @@ if(hasValue($this->fields->js)) {
 </div><!-- end #wrap -->
 <footer id="footer" role="contentinfo">
     <div class="container">
-        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • Theme <a href="https://hran.me/mirages.html?copyright&v=141b2" target="_blank">Mirages</a></p>
+        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • Theme <a href="https://hran.me/mirages.html?copyright&v=141b3" target="_blank">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
 <div id="loader-wrapper">

@@ -53,7 +53,8 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
         array(), _t('数学公式支持'), _t("在启用「显示数学公式」后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$$ ... $$</code> 或 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\\\\[ ... \\\\]</code> 输入块级公式, 使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\\\\( ... \\\\)</code> 输入行内公式。<br>".
             "在启用了「使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$ ... $</code> 输入行内公式」选项后, 你可以使用 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$ ... $</code> 来输入行内公式, 但因为 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$</code> 符出现的可能比较频繁, 因此可能会造成误判的情况。<br>".
             "如: <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>... the cost is $2.50 for the first one, and $2.00 for each additional one ...</code><br>".
-            "将会对 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>2.50 for the first one, and </code> 进行解析。"));
+            "将会对 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>2.50 for the first one, and </code> 进行解析。<br>".
+            "当然, 你也可以使用转义符对 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>$</code> 进行转义, 如 <code style='background-color: rgba(0, 0, 0, 0.071);color: #666;'>\\$</code> "));
     $form->addInput($texOptionsBlock->multiMode());
 
     $markdownExtendBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('markdownExtend',
@@ -400,6 +401,7 @@ function _renderPart($content) {
     if ((!empty($options->markdownExtend) && in_array('enableHighlightText', $options->markdownExtend))) {
         $content = _renderHighlight($content);
     }
+    $content = _escapeCharacter($content);
     $content = _renderCards($content);
     return $content;
 }
@@ -412,13 +414,18 @@ function _renderPhonetic($content) {
 
 function _renderDeleteTag($content) {
     $content = preg_replace('/\~\~(.+?)\~\~/i', "<del>$1</del>", $content);
-    $content = str_replace('\~', '~', $content);
     return $content;
 }
 
 function _renderHighlight($content) {
     $content = preg_replace('/\=\=(.+?)\=\=/i', "<span class=\"highlight-text\">$1</span>", $content);
+    return $content;
+}
+
+function _escapeCharacter($content) {
+    $content = str_replace('\~', '~', $content);
     $content = str_replace('\=', '=', $content);
+    $content = str_replace('\$', '<span>$</span>', $content);
     return $content;
 }
 
