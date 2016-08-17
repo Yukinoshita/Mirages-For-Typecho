@@ -410,6 +410,23 @@ img[src*="Smilies"] {
     text-align: center;
     margin-top: 20vh;
 }
+#archives-tags {
+    margin-top: 60px;
+}
+
+#archives-tags a {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    color: #333;
+    font-style: normal;
+    line-height: 18px;
+    font-size: 1.143em;
+}
+
+.itags:hover {
+    background: #eee;
+}
 
 /*Post And Pages*/
 #post article {
@@ -1668,6 +1685,8 @@ form.protected input[type="submit"].submit:hover {
     color: #FFF !important;
 }
 
+
+
 /* Loader */
 #loader-wrapper {
     /*display: none;*/
@@ -2317,6 +2336,13 @@ body.theme-dark .post-near .prev:hover, body.theme-dark .post-near .next:hover {
 }
 body.theme-dark #comments .widget-title {
     padding-top: 0;
+}
+body.theme-dark #archives-tags a {
+    color: #bcbcbc;
+}
+
+body.theme-dark #archives-tags a:hover {
+    background: #4d4d4d;
 }
 body.theme-dark .github-box {
     border-color: #5e5e5e !important;
