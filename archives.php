@@ -9,6 +9,16 @@
 $this->need('header.php'); ?>
 <div id="archives">
     <h1 id="archives-title"><?php $this->title() ?></h1>
+    <div id="archives-tags">
+        <h3>标签云</h3>
+        <?php Typecho_Widget::widget('Widget_Metas_Tag_Cloud')->to($tags); ?>
+        <?php if($tags->have()): ?>
+            <?php while ($tags->next()): ?>
+                <a class="itags" href="<?php $tags->permalink();?>">
+                    <?php $tags->name(); ?></a>
+            <?php endwhile; ?>
+        <?php endif; ?>
+    </div>
     <div id="archives-content">
         <br>
         <?php
