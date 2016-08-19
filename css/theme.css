@@ -20,7 +20,7 @@ body {
     background-color: #FFF;
     color: #777;
     font-size: 87.5%;
-    font-family: 'Myriad Pro', 'Merriweather', 'Open Sans', "PingFang SC", 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif;
+    font-family: 'Merriweather', 'Open Sans', "PingFang SC", 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
 }
 a {
@@ -449,8 +449,18 @@ img[src*="Smilies"] {
     font-weight: 300;
     font-size: 3em;
 }
-@media screen and (max-width: 374px) {
+#body>.archive-title {
+    text-align: center;
+    font-weight: 300;
+    font-size: 3em;
+    padding: 30px;
+    background: #fafafa;
+}
+@media screen and (max-width: 414px) {
     #archive .archive-title {
+        font-size: 2.4em;
+    }
+    #body>.archive-title {
         font-size: 2.4em;
     }
 }
@@ -533,12 +543,21 @@ img[src*="Smilies"] {
 img.biaoqing, #ds-thread #ds-reset .ds-comment-body img.biaoqing {
     display: inline;
     margin: 0;
+    width: auto;
+    max-width: 100px;
 }
 img.paopao, #ds-thread #ds-reset .ds-comment-body img.paopao {
     margin-bottom: -5px;
     height: 32px;
-    width: 32px;
-    max-width: 32px;
+
+}
+img.newpaopao, #ds-thread #ds-reset .ds-comment-body img.newpaopao {
+    margin-bottom: -4px;
+    height: 30px;
+}
+img.alu, #ds-thread #ds-reset .ds-comment-body img.alu {
+    margin-bottom: -5px;
+    height: 33px;
 }
 
 
@@ -1938,7 +1957,7 @@ form.protected input[type="submit"].submit:hover {
     font-weight: normal !important;
 }
 .github-box, .github-box .github-box-title h3 {
-    font-family: 'Myriad Pro', 'Merriweather', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif !important;
+    font-family: 'Merriweather', 'Open Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif !important;
 }
 .github-box .github-box-title h3 .repo{
     font-weight: normal !important;
@@ -2102,7 +2121,7 @@ body.theme-white {
 }
 body.theme-white #nav {
     background: #fafafa;
-    border-right: 1px dashed #efefef;
+    border-right: 1px solid #efefef;
 }
 body.theme-white #nav .search-box .search {
     background-color: #fff;
