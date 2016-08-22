@@ -10,7 +10,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 				<div class="post">
                     <a href="<?php $this->permalink() ?>"><h4 class="post-title" itemprop="headline"><?php $this->title() ?></h4></a>
 					<div class="post-info">
-						<span itemprop="datePublished"><?php $this->date($this->options->postDateFormat); ?></span>
+						<span itemprop="datePublished"><?php $this->date($this->options->postDateFormat); ?> • </span>
 						<span class="comments"><a href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('评论', '1 条评论', '%d 条评论'); ?></a></span>
 					</div>
 					<div class="post-content" itemprop="description">
@@ -25,7 +25,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
             </article>
         <?php endif; ?>
 
-        <?php $this->pageNav('&laquo;', '&raquo;'); ?>
+        <?php $this->pageNav('&laquo;', '&raquo;', 1); ?>
     </div><!-- end #main -->
 
 	<?php $this->need('footer.php'); ?>

@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <style type="text/css">
     /*根据操作系统及浏览器优化font-family*/
-<?php if(isELCapitanOrAbove()): ?>
+    <?php if(isELCapitanOrAbove()): ?>
     /*Mac OS X - El Capitan*/
     body, #index .post .post-title,#archive .post .post-title, #nav .menu li a {
         font-weight: 400;
@@ -33,13 +33,13 @@
             font-weight: 400;
         }
     }
-<?php endif?>
+    <?php endif?>
 
 </style>
 <style type="text/css">
     /*根据操作系统及浏览器进行样式修正*/
 
-<?php if(isMobile()):?>
+    <?php if(isMobile()):?>
     /*移动端*/
     html, body, div, p, ol, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td, blockquote, img{
         -webkit-font-smoothing: auto !important;
@@ -61,58 +61,58 @@
         color: #fff;
     }
     #index .more>a:hover,#archive .more>a:hover {
-        width: 250px;
+        width: 15.625rem;
     }
     .link-box a:active {
-        box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
-        -webkit-box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
-        -webkit-transform: translateY(-4px);
-        transform: translateY(-4px);
+        box-shadow: 0 1.375rem 2.6875rem rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0 1.375rem 2.6875rem rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-0.25rem);
+        transform: translateY(-0.25rem);
         -moz-transform: none;
     }
-<?php else:?>
+    <?php else:?>
     /*桌面端*/
     #index .post .post-title:hover,#archive .post .post-title:hover {
         color: #1abc9c;
     }
     #index .more>a:hover,#archive .more>a:hover {
         color: #FFF !important;
-        border: 1px dashed #1abc9c;
+        border: .0625rem dashed #1abc9c;
         background-color: rgba(24,188,156,0.5);
-        width: 250px;
+        width: 15.625rem;
     }
     .link-box a:hover {
-        box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
-        -webkit-box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
-        -webkit-transform: translateY(-4px);
-        transform: translateY(-4px);
+        box-shadow: 0 1.375rem 2.6875rem rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0 1.375rem 2.6875rem rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-0.25rem);
+        transform: translateY(-0.25rem);
         -moz-transform: none;
     }
-<?php endif?>
-<?php if(isPhone()):?>
+    <?php endif?>
+    <?php if(isPhone()):?>
     /*Phone*/
     .post-content {
         /*font-weight: 400;*/
-        font-size: 18px;
+        font-size: 1.125rem
     }
     .post-content pre {
-        font-size: 14px;
+        font-size: .875rem
     }
     .container {
-        max-width: 620px;
+        max-width: 38.75rem
     }
-<?php endif?>
-<?php if(deviceIs("iPad")):?>
+    <?php endif?>
+    <?php if(deviceIs("iPad")):?>
     /*iPad*/
     .post-content {
         /*font-weight: 400;*/
-        font-size: 18px;
+        font-size: 1.125rem
     }
     .post-content pre {
-        font-size: 14px;
+        font-size: .875rem
     }
-<?php endif?>
-<?php if(shouldEnableBlurFilter()):?>
+    <?php endif?>
+    <?php if(shouldEnableBlurFilter()):?>
     #wrap.display-nav #body, #footer.display-nav {
         -webkit-filter: blur(10px);
         -moz-filter: blur(10px);
@@ -120,18 +120,18 @@
         -o-filter: blur(10px);
         filter: blur(10px);
     }
-<?php else:?>
+    <?php else:?>
     #wrap.display-nav #body, #footer.display-nav {
         opacity: 0.1;
     }
-<?php endif?>
+    <?php endif?>
 
-<?php if(isSafari()):?>
+    <?php if(isSafari()):?>
     /*Safari*/
     /*a#toggle-nav {*/
-        /*padding-bottom: 0;*/
+    /*padding-bottom: 0;*/
     /*}*/
-<?php else:?>
+    <?php else:?>
     /*Not Safari*/
     /*
     *webkit浏览器滚动条样式
@@ -187,74 +187,58 @@
     /*
      *  end webkit浏览器滚动条样式
      */
-<?php endif?>
-<?php if(deviceIs('Edge')):?>
+    <?php endif?>
+    <?php if(deviceIs('Edge')):?>
     /*Edge*/
     #footer a:after,#header .nav li a:after,#post .post-meta a:after,#index .comments a:after,#index .post-content a:after,#post .post-content a:after,#archive .post-content a:after, #archive .comments a:after{
         transition: none
     }
-<?php endif?>
-<?php if(isWindows()): ?>
+    <?php endif?>
+    <?php if(isWindows()): ?>
     /*Windows*/
     .post-content p {
         letter-spacing: 0;
     }
-    @media screen and (min-width: 1600px){
-        #index .more>a, #archive .more>a {
-            width: 220px;
-        }
-        #index .more>a:hover, #archive .more>a:hover {
-            width: 300px;
-        }
-        .container {
-            max-width: 768px;
-        }
-    }
-    @media screen and (min-width: 1900px){
-        .container {
-            max-width: 852px;
-        }
-    }
-<?php endif?>
-<?php if(isWindowsAboveVista()): ?>
+    <?php endif?>
+    <?php if(isWindowsAboveVista()): ?>
     /*Windows Vista +*/
     #index .more>a, #archive .more>a {
         letter-spacing: 0;
     }
-<?php endif?>
+    <?php endif?>
 </style>
 <style type="text/css">
     /** 页面样式调整 */
-<?php if(!hasValue($this->options->postQRCodeURL) || !hasValue($this->options->rewardQRCodeURL)): ?>
+    <?php if(!hasValue($this->options->postQRCodeURL) || !hasValue($this->options->rewardQRCodeURL)): ?>
     .post-buttons a {
         width: calc(100% / 2);
     }
-<?php endif?>
+    <?php endif?>
 
-<?php if(hasValue($this->options->duoshuoShortName)):?>
+    <?php if(hasValue($this->options->duoshuoShortName)):?>
     #ds-thread #ds-reset a.ds-user-name[data-user-id='<?=$this->options->duoshuoUserId?>']:after {
         content: "博主";
-        margin-left: 6px;
-        font-size: 12px;
+        margin-left: .375rem;
+        font-size: .75rem;
         color: #fff;
         background: rgba(255, 255, 255, .35);
-        border-radius: 4px;
-        padding: 1px 3px;
+        border-radius: .25rem;
+        padding: .0625rem .1875rem;
     }
     body.theme-white #ds-thread #ds-reset a.ds-user-name[data-user-id='<?=$this->options->duoshuoUserId?>']:after {
         background: rgba(0, 0, 0, .35);
     }
-<?php endif?>
+    <?php endif?>
 </style>
-<?php 
-    if(isHexColor($this->options->themeColor)) {
-        $this->need('head_colors.php');
-    }
+<?php
+if(isHexColor($this->options->themeColor)) {
+    $this->need('head_colors.php');
+}
 ?>
 <style type="text/css">
-<?php
-    if(hasValue($this->options->customCss)) {
-        echo $this->options->customCss;
-    }
-?> 
+    <?php
+        if(hasValue($this->options->customCss)) {
+            echo $this->options->customCss;
+        }
+    ?>
 </style>

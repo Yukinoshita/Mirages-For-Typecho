@@ -90,6 +90,7 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
             'enableWebP' => _t('启用 WebP 图像格式 (需要使用七牛云存储)'),
             'alwaysShowDashboardInSideMenu' => _t('始终显示 Dashboard(控制台) 菜单'),
             'useChineseInSideMenu' => _t('侧边栏使用中文菜单'),
+            'showBannerCurveStyle' => _t('Banner 下边界添加弧型遮罩'),
             'enablePjax' => _t('启用 PJAX (Beta)'),
         ),
         array(), _t('其他选项'));
@@ -560,4 +561,15 @@ function initTheme($archive) {
     }
     $db = Typecho_Db::get();
     $archive->userNum = $db->fetchObject($db->select(array('COUNT(uid)' => 'num'))->from('table.users'))->num;
+    if($archive->is("index")){
+        $archive->banner = $options->defaultBg;
+    } else {
+        $archive->banner = loadArchiveBanner($archive);
+    }
+    $archive->showBanner = (strlen($archive->banner) > 5) || $archive->is('page','about') || $archive->is('page','links');
+    if(isHexColor($options->themeColor)) {
+        $archive->colorClass = "color-custom";
+    } else {
+        $archive->colorClass = "color-default";
+    }
 }

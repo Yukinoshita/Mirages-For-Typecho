@@ -14,7 +14,7 @@
             <?php endif?>
             <li> • <?php $this->category(','); ?></li>
             <?php if($this->user->hasLogin()):?>
-            <li class="edit"><a href="<?php Helper::options()->adminUrl()?>write-post.php?cid=<?=$this->cid?>" target="_blank"><?php _e('编辑'); ?></a></li>
+            <li class="edit"> • <a href="<?php Helper::options()->adminUrl()?>write-post.php?cid=<?=$this->cid?>" target="_blank"><?php _e('编辑'); ?></a></li>
             <?php endif?>
         </ul>
         <?php endif?>

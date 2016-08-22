@@ -1,11 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php
     initTheme($this);
-    if(isHexColor($this->options->themeColor)) {
-        $colorClass = "color-custom";
-    } else {
-        $colorClass = "color-default";
-    }
 ?>
 <?php if(!isPjax() || !PJAX_ENABLED):?>
 <!DOCTYPE HTML>
@@ -19,7 +14,7 @@
     $this->need('headfix.php');
 ?>
 </head>
-<body class="<?=THEME_CLASS." ".$colorClass?>">
+<body class="<?=THEME_CLASS." ".$this->colorClass?>">
 <?php if($this->options->disableAutoNightTheme <= 0 && !hasValue($this->options->disqusShortName) && THEME_CLASS != "theme-dark"):?>
     <script>
         if (USE_MIRAGES_DARK) {
@@ -47,14 +42,7 @@
     <div id="body">
         <?php $this->need('headfix_pages.php');?>
         <script type="text/javascript">
-            var bg = "<?php
-                if($this->is("index")){
-                    $this->banner = Helper::options()->defaultBg;
-                } else {
-                    $this->banner = loadArchiveBanner($this);
-                }
-                echo $this->banner;
-                ?>";
+            var bg = "<?=$this->banner?>";
             var getBgHeight = function(windowHeight){
                 windowHeight = windowHeight || 560;
                 if (windowHeight > window.screen.availHeight) {
@@ -76,8 +64,7 @@
             bg += addon;
             <?php endif?>
         </script>
-        <?php $showBanner = (strlen($this->banner) > 5) || $this->is('page','about') || $this->is('page','links');?>
-        <?php if($showBanner):?>
+        <?php if($this->showBanner):?>
         <header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom animation-on" style="
         <?php if($this->is("page","about")):?>
             background-color: #2a2b2c;

@@ -4,11 +4,11 @@
  *
  * 详细的安装及升级帮助可以查看: <a href="https://github.com/Dalodd/Mirages-For-Typecho/wiki">这里</a>
  *
- * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info&v=141b3#comments">我的博客留言</a>
+ * 如果有什么意见或建议也欢迎到<a href="https://hran.me/mirages.html?theme_info&v=141b4#comments">我的博客留言</a>
  *
  * @package Mirages
  * @author Hran
- * @version 1.4.1b3
+ * @version 1.4.1b4
  * @link http://hran.me/?mirages
  */
 
@@ -22,7 +22,7 @@ $this->need('header.php');
                 <a href="<?php $this->permalink() ?>"><h2 class="post-title" itemprop="headline"><?php $this->title() ?></h2></a>
                 <div class="post-info">
 					<span itemprop="datePublished"><?php $this->date($this->options->postDateFormat); ?> • </span>
-					<span itemprop="categoryPublished"><?php $this->category(','); ?></span>
+					<span itemprop="categoryPublished"><?php $this->category(','); ?> • </span>
 					<?php $parsed = parse_url($this->permalink);?>
 					<?php if(strlen($this->options->disqusShortName) > 0):?>
 						<span class="comments"><a href="<?php $this->permalink() ?>#disqus_thread" data-disqus-identifier="<?= $parsed['path'];?>"><?php _e('评论')?></a></span>
@@ -39,7 +39,7 @@ $this->need('header.php');
         </article>
 	<?php endwhile; ?>
 
-    <?php $this->pageNav('&laquo;', '&raquo;'); ?>
+    <?php $this->pageNav('&laquo;', '&raquo;', 1); ?>
 </div><!-- end #main-->
 <?php $this->need('footer.php'); ?>
 
