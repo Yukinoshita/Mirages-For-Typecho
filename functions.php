@@ -539,7 +539,7 @@ function initTheme($archive) {
     if (strlen($options->staticPath) > 0){
         define("STATIC_PATH", rtrim($options->staticPath,'/').'/');
     } else {
-        define("STATIC_PATH", $options->rootUrl."/usr/themes/Mirages/");
+        define("STATIC_PATH", rtrim($options->themeUrl,'/').'/');
     }
     if ((!empty($options->otherOptions) && in_array('enablePjax', $options->otherOptions))) {
         define("PJAX_ENABLED", true);
