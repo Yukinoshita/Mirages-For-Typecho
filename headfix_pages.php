@@ -97,9 +97,12 @@
         text-align: <?=$this->fields->textAlign?>;
     }
     <?php endif?>
-    <?php if (isTrue($this->fields->headTitle) || hasValue($this->fields->mastheadTitle || hasValue($this->fields->mastheadSubtitle))):?>
+    <?php if ($this->showBanner && (isTrue($this->fields->headTitle) || hasValue($this->fields->mastheadTitle || hasValue($this->fields->mastheadSubtitle)))):?>
     .inner {
         background-color: rgba(0,0,0,0.17);
+    }
+    #masthead {
+        min-height: 12.5rem;
     }
     <?php endif?>
 </style>
