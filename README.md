@@ -10,7 +10,7 @@
 
 图：
 
-![首页](https://raw.githubusercontent.com/Dalodd/Mirages-For-Typecho/master/imgs/Screenshot-2016-08-25-5-30-19.png)
+![首页](https://raw.githubusercontent.com/Dalodd/Mirages-For-Typecho/14d2a30b7f81b0ddce4a9faa13ae730b8c001a2c/imgs/Screenshot-2016-08-25-5-30-19.png)
 
 ## 主题安装及使用帮助
 
