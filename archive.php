@@ -3,7 +3,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 
     <div id="archive" role="main">
-        
         <?php if ($this->have()): ?>
     	<?php while($this->next()): ?>
             <article  itemscope itemtype="http://schema.org/BlogPosting">
