@@ -186,8 +186,12 @@ img[src*="Smilies"] {
 
 /*Browser Happy*/
 .browse-happy {
-    padding: .5rem 0;
-    background: #fbe3e4;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    padding-top:20%;
+    background: #fff;
     color: #8a1f11;
     text-align: center
 }
@@ -2105,70 +2109,8 @@ a[href^="http://www.cnzz.com"] {
     }
 }
 /*高分屏字体修正*/
-@media screen and (min-device-pixel-ratio:  1.5){
-    body{
-        font-weight: 300;
-    }
-    code, #post .post-title{
-        -webkit-font-smoothing: antialiased !important;
-    }
-    .post-content pre>code {
-        font-weight: 400;
-    }
-    .post-content code {
-        font-size: .812rem
-    }
-    .post-content h1>code, .post-content h2>code, .post-content h3>code, .post-content h4>code {
-        padding: .1em 0;
-        font-size: .7em;
-    }
-    #archives #archives-title{
-        font-weight: 300;
-    }
-}
-@media screen and (-webkit-min-device-pixel-ratio: 1.5){
-    body{
-        font-weight: 300;
-    }
-    code, #post .post-title{
-        -webkit-font-smoothing: antialiased !important;
-    }
-    .post-content pre>code {
-        font-weight: 400;
-    }
-    .post-content code {
-        font-size: .812rem
-    }
-    .post-content h1>code, .post-content h2>code, .post-content h3>code, .post-content h4>code {
-        padding: .1em 0;
-        font-size: .7em;
-    }
-    #archives #archives-title{
-        font-weight: 300;
-    }
-}
-@media screen and (-o-min-device-pixel-ratio: 1.5/1.5){
-    body{
-        font-weight: 300;
-    }
-    code, #post .post-title{
-        -webkit-font-smoothing: antialiased !important;
-    }
-    .post-content pre>code {
-        font-weight: 400;
-    }
-    .post-content code {
-        font-size: .812rem
-    }
-    .post-content h1>code, .post-content h2>code, .post-content h3>code, .post-content h4>code {
-        padding: .1em 0;
-        font-size: .7em;
-    }
-    #archives #archives-title{
-        font-weight: 300;
-    }
-}
-@media screen and (min--moz-device-pixel-ratio: 1.5){
+@media screen and (min-device-pixel-ratio:  1.5), screen and (-webkit-min-device-pixel-ratio: 1.5),
+        screen and (-o-min-device-pixel-ratio: 1.5/1.5), screen and (min--moz-device-pixel-ratio: 1.5){
     body{
         font-weight: 300;
     }

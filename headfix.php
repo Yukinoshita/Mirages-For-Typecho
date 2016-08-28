@@ -9,19 +9,7 @@
     #post .post-title, .post-content h1, .post-content h2 {
         font-weight: 300;
     }
-    @media screen and (min-device-pixel-ratio: 1.5){
-        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
-        .post-content h1, .post-content h2 {
-            font-weight: 300;
-        }
-    }
-    @media screen and (-webkit-min-device-pixel-ratio: 1.5){
-        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
-        .post-content h1, .post-content h2 {
-            font-weight: 300;
-        }
-    }
-    @media screen and (-o-min-device-pixel-ratio: 1.5/1.5){
+    @media screen and (min-device-pixel-ratio: 1.5), screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (-o-min-device-pixel-ratio: 1.5/1.5){
         body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
         .post-content h1, .post-content h2 {
             font-weight: 300;
@@ -34,7 +22,6 @@
         }
     }
     <?php endif?>
-
 </style>
 <style type="text/css">
     /*根据操作系统及浏览器进行样式修正*/
@@ -196,6 +183,9 @@
     <?php endif?>
     <?php if(isWindows()): ?>
     /*Windows*/
+    body {
+        font-weight: 400;
+    }
     .post-content p {
         letter-spacing: 0;
     }

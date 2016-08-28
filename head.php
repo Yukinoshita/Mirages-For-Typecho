@@ -47,6 +47,13 @@ foreach ($addOnHighlightLang as $url) {
         link.href = css;
         document.head.appendChild(link);
     };
+    var STYLE = function (style, type) {
+        type = type || 'text/css';
+        var s = document.createElement('style');
+        s.type = type;
+        s.textContent = style;
+        document.head.appendChild(s);
+    };
     var JS = function (js, async) {
         async = async || false;
         var sc = document.createElement('script'), s = document.scripts[0];
@@ -109,7 +116,9 @@ foreach ($addOnHighlightLang as $url) {
         }
     </script>
 <?php endif ?>
-<link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme.min.css">
+<?php if (USE_EMBED_FONTS) $this->need('head_font.php');?>
+<!--<link rel="stylesheet" href="--><?//= TEST_STATIC_PATH ?><!--css/theme.css">-->
+<link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme-1472385696000.css">
 <?php if (hasValue($this->options->disqusShortName)): ?>
 <?php elseif (hasValue($this->options->duoshuoShortName)): ?>
     <link rel="stylesheet" href="<?= STATIC_PATH ?>css/embed.duoshuo.min.css">

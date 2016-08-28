@@ -9,7 +9,9 @@ function themeConfig(Typecho_Widget_Helper_Form $form) {
     $form->addInput($themeColor);
     $disableAutoNightTheme = new Typecho_Widget_Helper_Form_Element_Radio('disableAutoNightTheme', array('0'=>_t('开启'), '1'=>_t('关闭')), '0', _t('自动夜间模式'),_t('默认为开启'));
     $form->addInput($disableAutoNightTheme);
-
+    $webFont = new Typecho_Widget_Helper_Form_Element_Radio('webFont', array('0'=>_t('主题内置'), '1'=>_t('Google 字体')), '0', _t('主题字体加载方式'), NULL);
+    $form->addInput($webFont);
+    
     $staticPath = new Typecho_Widget_Helper_Form_Element_Text('staticPath', NULL, NULL, _t('静态文件路径'), _t('用于 CDN 加速，以主题目录为根目录，设置后一些静态文件会替换成该路径上的文件。'));
     $form->addInput($staticPath);
     $defaultBg = new Typecho_Widget_Helper_Form_Element_Text('defaultBg', NULL, NULL, _t('站点背景大图地址'), _t('在这里填入一个图片URL地址, 以在网站显示一个背景大图。留空则不显示。'));
@@ -149,6 +151,9 @@ function isELCapitanOrAbove(){
         }
     }
     return false;
+}
+function isIE() {
+    return __check(array("Trident", "Windows"), true);
 }
 function isSafari() {
     return __check(array("Safari", "Version/"), true) && !__check(array("Chrome", "Opera", "QQ"), false);
@@ -536,12 +541,15 @@ function initTheme($archive) {
     define("THEME_MIRAGES_WHITE", 1);
     define("THEME_MIRAGES_DARK", 2);
     define("LANG_CHN", (!empty($options->otherOptions) && in_array('useChineseInSideMenu', $options->otherOptions)));
+    define("USE_EMBED_FONTS", $options->webFont == 0);
+    define("USE_GOOGLE_FONTS", $options->webFont == 1);
     if (strlen($options->staticPath) > 0){
         define("STATIC_PATH", rtrim($options->staticPath,'/').'/');
     } else {
         define("STATIC_PATH", rtrim($options->themeUrl,'/').'/');
     }
-    if ((!empty($options->otherOptions) && in_array('enablePjax', $options->otherOptions))) {
+    define("TEST_STATIC_PATH", rtrim($options->themeUrl,'/').'/');
+    if ((!empty($options->otherOptions) && in_array('enablePjax', $options->otherOptions)) && !isIE()) {
         define("PJAX_ENABLED", true);
     } else {
         define("PJAX_ENABLED", false);

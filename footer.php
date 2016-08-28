@@ -61,7 +61,7 @@ if(hasValue($this->fields->js)) {
 </div><!-- end #wrap -->
 <footer id="footer" role="contentinfo">
     <div class="container">
-        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • Theme <a href="https://hran.me/mirages.html?copyright&v=141" target="_blank">Mirages</a></p>
+        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • Theme <a href="https://hran.me/mirages.html?copyright&v=142dev1" target="_blank">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
 <div id="loader-wrapper">
@@ -282,6 +282,7 @@ if(hasValue($this->fields->js)) {
         });
     })(jQuery);
 </script>
+<?php if (USE_GOOGLE_FONTS):?>
 <script>
     var fontname;
     if (window.devicePixelRatio >= 1.5) {
@@ -302,6 +303,7 @@ if(hasValue($this->fields->js)) {
         s.parentNode.insertBefore(wf, s);
     })(document);
 </script>
+<?php endif?>
 <?php
 if(hasValue($this->options->customJs)) {
     echo "<script type=\"text/javascript\">\n";
