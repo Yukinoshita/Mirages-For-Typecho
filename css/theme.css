@@ -523,7 +523,6 @@ img[src*="Smilies"] {
     font-weight: 300;
     font-size: 2.625rem;
     padding: 1.875rem;
-    background: #fafafa;
 }
 @media screen and (max-width: 25.875rem) {
     #archive .archive-title {
@@ -2288,9 +2287,6 @@ body.theme-dark .post-meta a,body.theme-dark .post-content a,.widget a,body.them
 body.theme-dark #index .more>a,body.theme-dark #archive .more>a{
     border-color: #5f5f5f;
     color: #999 !important;
-}
-#body>.archive-title {
-    background-color: #2c2a2a;
 }
 body.theme-dark #index .page-navigator li a:hover,body.theme-dark #archive .page-navigator li a:hover {
     background: #474747;
