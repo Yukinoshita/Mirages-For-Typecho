@@ -42,9 +42,10 @@
         }
     </style>
     <title>页面未找到</title>
-    <script>
-        <?php $this->options->tongJi(); ?>
-    </script>
+    <?php if (!$this->user->hasLogin()): ?>
+        <?php $this->options->tongJi();
+        echo "\n"; ?>
+    <?php endif ?>
 </head>
 
 <body>
