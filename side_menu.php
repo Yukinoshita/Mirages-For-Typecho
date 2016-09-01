@@ -3,7 +3,7 @@
 <div id="canvas">
     <div id="nav">
         <div class="author">
-            <a href="<?php Helper::options()->siteUrl()?>/about.html">
+            <a href="<?php Helper::options()->siteUrl()?>about.html">
                 <img src="<?php Helper::options()->sideMenuAvatar();?>" alt="Avatar" width="100" height="100"/>
             </a>
         </div>
