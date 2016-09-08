@@ -174,6 +174,10 @@
     /*
      *  end webkit浏览器滚动条样式
      */
+    #wrap {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
     <?php endif?>
     <?php if(deviceIs('Edge')):?>
     /*Edge*/
@@ -201,6 +205,7 @@
     /** 页面样式调整 */
     <?php if(!hasValue($this->options->postQRCodeURL) || !hasValue($this->options->rewardQRCodeURL)): ?>
     .post-buttons a {
+        width: -webkit-calc(100% / 2);
         width: calc(100% / 2);
     }
     <?php endif?>

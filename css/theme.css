@@ -36,15 +36,15 @@ h1> .superscript {
     position: absolute;
     padding-left: .4375rem;
     padding-top: .1875rem;
-    color: inherit !important;;
+    color: inherit !important;
 }
 
 h2> .superscript {
-    font-size: 0.45em !important;;
+    font-size: 0.45em !important;
     position: absolute;
     padding-left: .4375rem;
     padding-top: .1875rem;
-    color: inherit !important;;
+    color: inherit !important;
 }
 ::selection {
     background: #1abc9c;
@@ -77,6 +77,7 @@ img[src*="Smilies"] {
 
 /*Struct*/
 #wrap {
+    min-height: -webkit-calc(100% - 3.9375rem);
     min-height: calc(100% - 3.9375rem);
     transition: .5s;
     -o-transition: .5s;
@@ -245,7 +246,6 @@ img[src*="Smilies"] {
 /*Index And Archive - Post*/
 #index .post,#archive .post {
     padding: 0;
-    background-color: #fff
 }
 
 /*Index And Archive - Post Title*/
@@ -1645,6 +1645,7 @@ button,html input[type=button],input[type=reset],input[type=submit] {
         margin: -3.125rem;
     }
     .link-box a {
+        width: -webkit-calc(50% - 1.25rem);
         width: calc(50% - 1.25rem);
     }
     .link-box a:nth-of-type(even) {
@@ -1653,12 +1654,14 @@ button,html input[type=button],input[type=reset],input[type=submit] {
 }
 @media screen and (max-width: 73.125rem) and (min-width: 44.4375rem) {
     .link-box a {
+        width: -webkit-calc(100% / 3 - 1.875rem);
         width: calc(100% / 3 - 1.875rem);
         margin: 0 0.9375rem 3.75rem;
     }
 }
 @media screen and (min-width: 73.1875rem) {
     .link-box a {
+        width: -webkit-calc(100% / 3 - 1.875rem);
         width: calc(100% / 3 - 1.875rem);
         margin: 0 0.9375rem 3.75rem;
     }
@@ -1686,7 +1689,8 @@ button,html input[type=button],input[type=reset],input[type=submit] {
     border: 0.0625rem dashed #eee;
     color: #bbb !important;
     transition: all .5s;
-    width: calc(100%/3);
+    width: -webkit-calc(100% / 3);
+    width: calc(100% / 3);
     position: relative;
     margin: 0 auto 0 -0.3125rem;
     font-size: .875rem;
