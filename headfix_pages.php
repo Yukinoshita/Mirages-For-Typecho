@@ -11,6 +11,7 @@
         bottom: -1.875rem;
         border-radius: 100%;
         position: absolute;
+        z-index: -1;
     }
     .inner::after {
         content: '';

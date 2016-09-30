@@ -2077,7 +2077,7 @@ form.protected > p {
     border-bottom-width: 0!important
 }
 
-a[href^="http://www.cnzz.com"] {
+a[href*="//www.cnzz.com"][title="站长统计"] {
     display: none;
 }
 
@@ -2442,6 +2442,9 @@ body.theme-dark #qr-box {
 }
 body.theme-dark #loader-wrapper {
     background-color: #2c2a2a;
+}
+body.theme-dark .sk-circle .sk-child:before {
+    background-color: #bcbcbc;
 }
 @supports (-webkit-backdrop-filter: brightness(150%) blur(30px)) or (backdrop-filter: brightness(150%) blur(30px)){
     body.theme-dark #loader-wrapper {
