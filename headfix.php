@@ -22,6 +22,20 @@
         }
     }
     <?php endif?>
+    <?php if (isSierraOrAbove()): ?>
+    /*Mac OS X - Sierra*/
+    <?php if (deviceIs('Chrome', 'Edge') || deviceIs(array('Chrome', 'OPR'))): ?>
+    body {
+        font-family: 'Merriweather', 'Open Sans', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif;
+    }
+    <?php endif?>
+    @media screen and (min--moz-device-pixel-ratio: 1.5){
+        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
+        .post-content h1, .post-content h2 {
+            font-weight: 300;
+        }
+    }
+    <?php endif?>
 </style>
 <style type="text/css">
     /*根据操作系统及浏览器进行样式修正*/

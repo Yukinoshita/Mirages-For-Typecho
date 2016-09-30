@@ -143,12 +143,23 @@ function isMacOSX(){
     return deviceIs("Macintosh");
 }
 function isELCapitanOrAbove(){
+    $version = getMacOSXVersion();
+    if ($version && $version >= 11) {
+        return true;
+    }
+    return false;
+}
+function isSierraOrAbove(){
+    $version = getMacOSXVersion();
+    if ($version && $version >= 11) {
+        return true;
+    }
+    return false;
+}
+function getMacOSXVersion(){
     $ua = strtolower($_SERVER["HTTP_USER_AGENT"]);//Mac OS X 10_11_4
     if (preg_match('/^.+Mac\s+OS\s+X\s+\d+[^a-zA-Z0-9]+(\d+).*$/i', $ua, $matches)) {
-        $version = intval($matches[1]);
-        if ($version >= 11) {
-            return true;
-        }
+        return intval($matches[1]);
     }
     return false;
 }
@@ -156,7 +167,7 @@ function isIE() {
     return __check(array("Trident", "Windows"), true);
 }
 function isSafari() {
-    return __check(array("Safari", "Version/"), true) && !__check(array("Chrome", "Opera", "QQ"), false);
+    return __check(array("Safari", "Version/"), true) && !__check(array("Chrome", "Opera", "OPR", "QQ"), false);
 }
 function deviceIs($is, $not = array(), $needAllMatch = false){
     if(empty($not)){
