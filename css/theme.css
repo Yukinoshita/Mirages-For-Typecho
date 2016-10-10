@@ -228,7 +228,7 @@ img[src*="Smilies"] {
     position: relative;
     white-space: normal;
 }
-#footer a:after:not(a[no-line]),#header .nav li a:after:not(a[no-line]),#post .post-meta a:after:not(a[no-line]),#index .comments a:after:not(a[no-line]),#index .post-content a:after:not(a[no-line]),#post .post-content a:after:not(a[no-line]),#archive .post-content a:after:not(a[no-line]), #archive .comments a:after:not(a[no-line]){
+#footer a:after,#header .nav li a:after,#post .post-meta a:after,#index .comments a:after,#index .post-content a:after,#post .post-content a:after,#archive .post-content a:after, #archive .comments a:after{
     position: absolute;
     bottom: -0.0625rem;
     left: 100%;
@@ -534,8 +534,14 @@ img[src*="Smilies"] {
 }
 
 /*Post Meta*/
-.post-meta a:not(a[no-line]),.post-content a:not(a[no-line]),.widget a:not(a[no-line]),.comment-content a:not(a[no-line]) {
+.post-meta a,.post-content a,.widget a,.comment-content a {
     border-bottom: .0625rem dashed #EEE
+}
+a.no-underline {
+    border-bottom: none !important;
+}
+a.no-underline:hover:after {
+    width: 0!important;
 }
 .post-meta a:hover,.post-content a:hover,.widget a:hover,.comment-content a:hover {
     border-bottom-color: transparent
@@ -1581,9 +1587,6 @@ button,html input[type=button],input[type=reset],input[type=submit] {
     -ms-user-select: none;
     user-select: none;
     border-bottom: none;
-}
-.link-box a:after {
-    border-bottom: none !important;
 }
 .link-box a .thumb {
     font-size: 0;
