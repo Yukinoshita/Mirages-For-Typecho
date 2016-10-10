@@ -9,7 +9,7 @@
  * @package Mirages
  * @author Hran
  * @version 1.4.2dev2
- * @link http://hran.me/?mirages
+ * @link http://hran.me/?mirages=1.4.2dev2
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

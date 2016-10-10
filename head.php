@@ -118,7 +118,7 @@ foreach ($addOnHighlightLang as $url) {
 <?php endif ?>
 <?php if (USE_EMBED_FONTS) $this->need('head_font.php');?>
 <!--<link rel="stylesheet" href="--><?//= TEST_STATIC_PATH ?><!--css/theme.css">-->
-<link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme-1474875472000.css">
+<link rel="stylesheet" href="<?= STATIC_PATH ?>css/theme-1475913046000.css">
 <?php if (hasValue($this->options->disqusShortName)): ?>
 <?php elseif (hasValue($this->options->duoshuoShortName)): ?>
     <link rel="stylesheet" href="<?= STATIC_PATH ?>css/embed.duoshuo.min.css">
