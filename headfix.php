@@ -22,6 +22,20 @@
         }
     }
     <?php endif?>
+    <?php if (isSierraOrAbove()): ?>
+    /*Mac OS X - Sierra*/
+    <?php if (deviceIs('Chrome', 'Edge') || deviceIs(array('Chrome', 'OPR'))): ?>
+    body {
+        font-family: 'Merriweather', 'Open Sans', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'Segoe UI Emoji', 'Segoe UI Symbol', Helvetica, Arial, sans-serif;
+    }
+    <?php endif?>
+    @media screen and (min--moz-device-pixel-ratio: 1.5){
+        body, #post .post-title, #index .post .post-title,#archive .post .post-title, #nav .menu li a,
+        .post-content h1, .post-content h2 {
+            font-weight: 300;
+        }
+    }
+    <?php endif?>
 </style>
 <style type="text/css">
     /*根据操作系统及浏览器进行样式修正*/
@@ -174,6 +188,10 @@
     /*
      *  end webkit浏览器滚动条样式
      */
+    #wrap {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
     <?php endif?>
     <?php if(deviceIs('Edge')):?>
     /*Edge*/
@@ -201,6 +219,7 @@
     /** 页面样式调整 */
     <?php if(!hasValue($this->options->postQRCodeURL) || !hasValue($this->options->rewardQRCodeURL)): ?>
     .post-buttons a {
+        width: -webkit-calc(100% / 2);
         width: calc(100% / 2);
     }
     <?php endif?>

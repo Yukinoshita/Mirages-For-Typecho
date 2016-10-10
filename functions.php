@@ -1,8 +1,9 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig(Typecho_Widget_Helper_Form $form) {
+    echo '<p style="font-size:16px;">感谢您使用 Mirages • <a href="https://github.com/Dalodd/Mirages-For-Typecho/wiki" target="_blank">主题帮助文档</a> • <a href="https://hran.me/mirages.html?theme_option&v=142#comments" target="_blank">意见或建议</a></p>', '<p style="font-size:14px;">版本: 1.4.2 <a id="mirages_update_link" href="https://github.com/Dalodd/Mirages-For-Typecho/releases" target="_blank"><span id="mirages_update_notification"></span></a></p><p style="font-size:14px;">　</p>', '<script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js" type="text/javascript"></script>', '<script type="text/javascript">(function($){$.getJSON("https://api.hran.me/mirages/checkForUpdates?current=1.4.2&callback=?",null,function(data){if(data.error_no!=1){$("#mirages_update_notification").css("color","#333").html("[你可以到这里查看主题的最新版本]");return}if(data.new_version_available){var message="[新版本 <span style = \\"color:#f96;\\">"+data.latest_version+"</span> 已可用]";var color=data.color||"#1abc9c";$("#mirages_update_notification").css("color",color).html(message)}else{$("#mirages_update_notification").css("color","#333").html("[当前已为最新版]")}})})(jQuery)</script>';
 
-    $baseTheme = new Typecho_Widget_Helper_Form_Element_Radio('baseTheme', array('0'=>_t('Mirages'), '1'=>_t('Mirages White'),'2'=>_t('Mirages Dark')), '0', _t('主题基础色调'),_t('默认为 Mirages'));
+    $baseTheme = new Typecho_Widget_Helper_Form_Element_Radio('baseTheme', array('0'=>_t('Mirages'), '1'=>_t('Mirages White'),'2'=>_t('Mirages Dark')), '1', _t('主题基础色调'),_t('默认为 Mirages White'));
     $form->addInput($baseTheme);
     $themeColor = new Typecho_Widget_Helper_Form_Element_Text('themeColor', NULL, NULL, _t('自定义主题主色调'), _t('默认为<span style="color: #1abc9c;">#1abc9c</span>, 你可以自定义任何你喜欢的颜色作为主题主色调。自定义主色调必须使用 Hex Color, 即`#233333`或`#333`的格式。填写错误的格式可能不会生效。'));
     $themeColor->input->setAttribute('class', 'mini');
@@ -143,12 +144,23 @@ function isMacOSX(){
     return deviceIs("Macintosh");
 }
 function isELCapitanOrAbove(){
+    $version = getMacOSXVersion();
+    if ($version && $version >= 11) {
+        return true;
+    }
+    return false;
+}
+function isSierraOrAbove(){
+    $version = getMacOSXVersion();
+    if ($version && $version >= 11) {
+        return true;
+    }
+    return false;
+}
+function getMacOSXVersion(){
     $ua = strtolower($_SERVER["HTTP_USER_AGENT"]);//Mac OS X 10_11_4
     if (preg_match('/^.+Mac\s+OS\s+X\s+\d+[^a-zA-Z0-9]+(\d+).*$/i', $ua, $matches)) {
-        $version = intval($matches[1]);
-        if ($version >= 11) {
-            return true;
-        }
+        return intval($matches[1]);
     }
     return false;
 }
@@ -156,7 +168,7 @@ function isIE() {
     return __check(array("Trident", "Windows"), true);
 }
 function isSafari() {
-    return __check(array("Safari", "Version/"), true) && !__check(array("Chrome", "Opera", "QQ"), false);
+    return __check(array("Safari", "Version/"), true) && !__check(array("Chrome", "Opera", "OPR", "QQ"), false);
 }
 function deviceIs($is, $not = array(), $needAllMatch = false){
     if(empty($not)){

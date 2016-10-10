@@ -61,13 +61,25 @@ if(hasValue($this->fields->js)) {
 </div><!-- end #wrap -->
 <footer id="footer" role="contentinfo">
     <div class="container">
-        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • Theme <a href="https://hran.me/mirages.html?copyright&v=142dev1" target="_blank">Mirages</a></p>
+        <p>Copyright &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a> • Theme <a href="https://hran.me/mirages.html?copyright&v=142" target="_blank">Mirages</a></p>
     </div>
 </footer><!-- end #footer -->
+
 <div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
+    <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+    </div>
 </div>
 <?php $this->footer(); ?>
 <script type="text/javascript" class="n-progress">NProgress.inc(0.8);</script>

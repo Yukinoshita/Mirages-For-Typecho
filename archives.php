@@ -11,7 +11,7 @@ $this->need('header.php'); ?>
     <h1 id="archives-title"><?php $this->title() ?></h1>
     <div id="archives-tags">
         <h3>标签云</h3>
-        <?php Typecho_Widget::widget('Widget_Metas_Tag_Cloud')->to($tags); ?>
+        <?php Typecho_Widget::widget('Widget_Metas_Tag_Cloud', array('ignoreZeroCount' => true, 'limit' => 0))->to($tags); ?>
         <?php if($tags->have()): ?>
             <?php while ($tags->next()): ?>
                 <a class="itags" href="<?php $tags->permalink();?>">
