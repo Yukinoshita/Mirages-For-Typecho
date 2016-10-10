@@ -529,7 +529,7 @@ function _renderCards($content) {
         $linkGroupHtml = "<div class=\"link-box\">\n";
 
         foreach ($matches as $match) {
-            $linkGroupHtml .= "<a href=\"{$match[2]}\" target=\"_blank\">";
+            $linkGroupHtml .= "<a href=\"{$match[2]}\" target=\"_blank\" no-line>";
             $linkGroupHtml .= "<div class=\"thumb\">";
             $linkGroupHtml .= "<img width=\"200\" height=\"200\" src=\"{$match[4]}\" alt=\"{$match[3]}\"></div>";
             $linkGroupHtml .= "<div class=\"content\">";
